@@ -194,7 +194,7 @@ var ModuleDefaults = {
 		// M版時每次點擊往前往後移動幾格儲存格
 		slide: 2, // [number] 
 		// M版時一個畫面show幾格儲存格
-		show: 4 // [number] 
+		show: 5 // [number] 
 	},
 	// 設定花多久時間移動完成
 	speed: .2, // [number] 
@@ -295,34 +295,6 @@ var Module = function () {
 			}, srcollSpeed);
 			return this;
 		}
-		// srcollRight(){
-		// 	// var srcollWidth=this.smallWidth+3;
-		// 	this.slide_right.on('click',function(){
-		// 		var nowLeft=$('.content_box2').attr("style");
-		// 		console.log(nowLeft);
-		// 			var srcollWidth= ($('.content_box2').width()+3)*ModuleDefaults.count.slide;
-		// 			$( ".content_box2" ).animate({
-		// 				left: "+="+srcollWidth+"",
-		// 			},200);
-		// 		return this;
-		// 	});
-		// 	// console.log(srcollWidth);
-		// 	return this;
-		// }
-		// srcollLeft(){
-		// 	// var srcollWidth=this.smallWidth+3;
-		// 	this.slide_left.on('click',function(){
-		// 		var nowLeft=$('.content_box2').attr("style");
-		// 		console.log(nowLeft);
-		// 		var srcollWidth= ($('.content_box2').width()+3)*ModuleDefaults.count.slide;
-		// 		var totalWidth=$('.content_box2').width()*7;
-		// 		$(".content_box2").animate({
-		// 			left: "-="+srcollWidth+"",
-		// 		},200);
-		// 	});
-		// 	return this;
-		// }
-
 	}]);
 
 	return Module;
