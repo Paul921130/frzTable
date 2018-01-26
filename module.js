@@ -197,7 +197,7 @@ var ModuleDefaults = {
 		show: 4 // [number] 
 	},
 	// 設定花多久時間移動完成
-	speed: .3, // [number] 
+	speed: .2, // [number] 
 	// 每次點擊儲存格時會執行此callback，並帶入所點擊的儲存格jquery物件
 	whenClick: function whenClick($element) {
 		// console.log($element)
@@ -221,6 +221,8 @@ var Module = function () {
 	_createClass(Module, [{
 		key: 'init',
 		value: function init() {
+			var bigWidth = $(".col-xs-21").width();
+			console.log(bigWidth);
 			var slider = 0;
 			var moveStep = ModuleDefaults.count.slide;
 			$('.content_box2').attr("style", 'left: 0px;');
@@ -237,7 +239,9 @@ var Module = function () {
 					Module.prototype.goLeftScroll();
 				}
 			});
+
 			this.changeShow();
+			this.selectBox();
 			// this.srcollLeft();
 			// this.srcollRight();
 			return this;
@@ -253,16 +257,29 @@ var Module = function () {
 			return this;
 		}
 	}, {
+		key: 'selectBox',
+		value: function selectBox() {
+			$(".content_box2").on('click', function () {
+				$(".content_box2").removeClass('select');
+				$(this).addClass('select');
+			});
+			return this;
+		}
+	}, {
 		key: 'changeShow',
 		value: function changeShow() {
-			var bigBoxShow = this.smallWidth * ModuleDefaults.count.show;
-			$(".col-xs-21").width(bigBoxShow);
+			var borderSpace = ModuleDefaults.count.show * 2;
+			var BoxShow = ($(".col-xs-21").width() - borderSpace) / ModuleDefaults.count.show;
+			console.log(BoxShow);
+			$(".content_box2").width(BoxShow);
+			$('.content_box').width((BoxShow + 2) * 7);
+			return this;
 		}
 	}, {
 		key: 'goRightScroll',
 		value: function goRightScroll() {
 			var srcollSpeed = ModuleDefaults.speed * 1000;
-			var srcollWidth = ($('.content_box2').width() + 3) * ModuleDefaults.count.slide;
+			var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
 			$(".content_box2").animate({
 				left: "+=" + srcollWidth + ""
 			}, srcollSpeed);
@@ -272,7 +289,7 @@ var Module = function () {
 		key: 'goLeftScroll',
 		value: function goLeftScroll() {
 			var srcollSpeed = ModuleDefaults.speed * 1000;
-			var srcollWidth = ($('.content_box2').width() + 3) * ModuleDefaults.count.slide;
+			var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
 			$(".content_box2").animate({
 				left: "-=" + srcollWidth + ""
 			}, srcollSpeed);

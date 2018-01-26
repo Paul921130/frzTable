@@ -4,10 +4,10 @@ const ModuleDefaults =  {
         // M版時每次點擊往前往後移動幾格儲存格
         slide: 2, // [number] 
         // M版時一個畫面show幾格儲存格
-        show: 4 // [number] 
+        show: 4// [number] 
     },
     // 設定花多久時間移動完成
-    speed: .3, // [number] 
+    speed: .2, // [number] 
     // 每次點擊儲存格時會執行此callback，並帶入所點擊的儲存格jquery物件
     whenClick: function($element) {
         // console.log($element)
@@ -26,6 +26,8 @@ class Module {
 		this.slide_left=$('.slide_left');
 	}
 	init () {
+		var bigWidth=$(".col-xs-21").width();
+		console.log(bigWidth);
 		var slider=0;
 		var moveStep=ModuleDefaults.count.slide;
 		$('.content_box2').attr("style",'left: 0px;');
@@ -42,7 +44,9 @@ class Module {
 		        Module.prototype.goLeftScroll();
 		      }
 		});	
+		
 		this.changeShow();
+		this.selectBox();
 		// this.srcollLeft();
 		// this.srcollRight();
 		return this;
@@ -53,13 +57,24 @@ class Module {
 	frzTable(){
 		return this;
 	}
+	selectBox(){
+		$(".content_box2").on('click',function(){
+			$(".content_box2").removeClass('select');
+			$(this).addClass('select');
+		});
+		return this;
+	}
 	changeShow(){
-		var bigBoxShow=this.smallWidth*ModuleDefaults.count.show;
-		$(".col-xs-21").width(bigBoxShow);
+		var borderSpace= ModuleDefaults.count.show*2;
+		var BoxShow=($(".col-xs-21").width()-borderSpace) / ModuleDefaults.count.show;
+		console.log(BoxShow);
+		$(".content_box2").width(BoxShow);
+		$('.content_box').width((BoxShow+2)*7);
+		return this;
 	}
 	goRightScroll(){
 		var srcollSpeed=ModuleDefaults.speed*1000;
-		var srcollWidth= ($('.content_box2').width()+3)*ModuleDefaults.count.slide;
+		var srcollWidth= ($('.content_box2').width()+2)*ModuleDefaults.count.slide;
 		$( ".content_box2" ).animate({
 					left: "+="+srcollWidth+"",
 				},srcollSpeed);
@@ -67,7 +82,7 @@ class Module {
 	}
 	goLeftScroll(){
 		var srcollSpeed=ModuleDefaults.speed*1000;
-		var srcollWidth= ($('.content_box2').width()+3)*ModuleDefaults.count.slide;
+		var srcollWidth= ($('.content_box2').width()+2)*ModuleDefaults.count.slide;
 		$( ".content_box2" ).animate({
 					left: "-="+srcollWidth+"",
 				},srcollSpeed);
