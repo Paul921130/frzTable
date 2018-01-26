@@ -64,7 +64,10 @@ $classname: 'frzTable';
 		height: 70px;
 		cursor: pointer;
 		background: white;
-		border: 1px solid #eeeeee;
+		border: .5px solid #e2e2e2;
+		// &:hover{
+		// 	background: #fff9e3;
+		// }
 		span{
 			font-size: 12px;
 			color: #999999;
@@ -108,7 +111,7 @@ $classname: 'frzTable';
 		border: 2px solid #fe8e8b;
 	}
 	.hight_light{
-		background: #eeeeee;
+		background: #f7f7f7;
 	}
 	// .bigbox{
 	// 	height: 50px;
