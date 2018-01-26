@@ -190,9 +190,20 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 var ModuleName = 'frzTable';
 var ModuleDefaults = {
-	properties: value
+	count: {
+		// M版時每次點擊往前往後移動幾格儲存格
+		slide: 2, // [number] 
+		// M版時一個畫面show幾格儲存格
+		show: 4 // [number] 
+	},
+	// 設定花多久時間移動完成
+	speed: .3, // [number] 
+	// 每次點擊儲存格時會執行此callback，並帶入所點擊的儲存格jquery物件
+	whenClick: function whenClick($element) {
+		// console.log($element)
+	}
 };
-var ModuleReturns = [];
+var ModuleReturns = ['output', 'methods'];
 
 var Module = function () {
 	function Module(ele, options) {
@@ -201,16 +212,53 @@ var Module = function () {
 		this.ele = ele;
 		this.$ele = $(ele);
 		this.option = options;
+		this.smallBox = $('.content_box2');
+		// this.smallWidth=$('.content_box2').width();
+		this.slide_right = $('.slide_right');
+		this.slide_left = $('.slide_left');
 	}
 
 	_createClass(Module, [{
 		key: 'init',
 		value: function init() {
+			console.log(this.smallWidth);
+			this.srcollLeft();
+			this.srcollRight();
 			return this;
 		}
 	}, {
 		key: 'methods',
 		value: function methods() {
+			return this;
+		}
+	}, {
+		key: 'frzTable',
+		value: function frzTable() {
+			return this;
+		}
+	}, {
+		key: 'srcollLeft',
+		value: function srcollLeft() {
+			// var srcollWidth=this.smallWidth+3;
+			this.slide_right.on('click', function () {
+				var srcollWidth = ($('.content_box2').width() + 3) * ModuleDefaults.count.slide;
+				$(".content_box2").animate({
+					left: "+=" + srcollWidth + ""
+				}, 300);
+			});
+			// console.log(srcollWidth);
+			return this;
+		}
+	}, {
+		key: 'srcollRight',
+		value: function srcollRight() {
+			// var srcollWidth=this.smallWidth+3;
+			this.slide_left.on('click', function () {
+				var srcollWidth = ($('.content_box2').width() + 3) * ModuleDefaults.count.slide;
+				$(".content_box2").animate({
+					left: "-=" + srcollWidth + ""
+				}, 300);
+			});
 			return this;
 		}
 	}]);

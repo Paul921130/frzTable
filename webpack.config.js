@@ -26,15 +26,15 @@ module.exports = {
 	module: {
         rules: [
         	{
-        		test: /\.cshtml$/,
-        		use: [
-	        		{
-				        loader: 'render-template-loader',
-				        options: {
-							engine: 'vash'
-				        }
-				    }
-			    ]
+       //  		test: /\.cshtml$/,
+       //  		use: [
+	      //   		{
+				   //      loader: 'render-template-loader',
+				   //      options: {
+							// engine: 'vash'
+				   //      }
+				   //  }
+			    // ]
         	},
         	{
         		test: /\.js$/,
@@ -69,10 +69,10 @@ module.exports = {
     plugins: ( (env = 'develop') => {
     	let defaultPlugins = [
     		ExtractSCSS,
-    		new HtmlWebpackPlugin({
-				filename: 'preview.html',
-				template: 'preview.cshtml',
-			})
+   //  		new HtmlWebpackPlugin({
+			// 	filename: 'preview.html',
+			// 	template: 'preview.cshtml',
+			// })
     	];
     	let envPlugins = {
     		'production': [
