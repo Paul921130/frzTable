@@ -242,6 +242,7 @@ var Module = function () {
 
 			this.changeShow();
 			this.selectBox();
+			// this.addColNum();
 			// this.srcollLeft();
 			// this.srcollRight();
 			return this;
@@ -260,8 +261,12 @@ var Module = function () {
 		key: 'selectBox',
 		value: function selectBox() {
 			$(".content_box2").on('click', function () {
-				$(".content_box2").removeClass('select');
-				$(this).addClass('select');
+				$(".content_box2").removeClass('select').removeClass('hight_light');
+				$(this).addClass('select').siblings().addClass('hight_light');
+				var i = $('.select').index() + 1;
+				console.log(i);
+				$(".content_box2:nth-child(" + i + ")").addClass("hight_light");
+				$(this).removeClass('hight_light');
 			});
 			return this;
 		}
@@ -295,6 +300,14 @@ var Module = function () {
 			}, srcollSpeed);
 			return this;
 		}
+		// addColNum(){
+		// 	var s = $( ".content_box2" ).toArray();
+		// 	console.log(s[3]);
+		// 	for( var i=0; i++; i<=42){
+		// 		$( ".content_box2" ).each().addClass("col"+i+"");
+		// 	}
+		// }
+
 	}]);
 
 	return Module;
