@@ -59,6 +59,8 @@ $classname: 'frzTable';
 	.slide_right{
 		position: absolute;
 		right: 0;
+		top:50%;
+		margin-top: -30px;
 		color: white;
 		cursor: pointer;
 		z-index: 99;
@@ -68,7 +70,9 @@ $classname: 'frzTable';
 	.slide_left{
 		position: absolute;
 		left: 0;
+		top: 50%;
 		color: white;
+		margin-top: -30px;
 		cursor: pointer;
 		z-index: 99;
 		padding: 20px 10px;
