@@ -37,11 +37,12 @@ class Module {
 			}
 		});
 		this.slide_right.on('click',function(){
-			if(slider+moveStep<7){
+			if(slider + moveStep <= 7){
 		        slider=slider+moveStep;
 		        Module.prototype.goLeftScroll();
 		      }
 		});	
+		this.changeShow();
 		// this.srcollLeft();
 		// this.srcollRight();
 		return this;
@@ -52,18 +53,24 @@ class Module {
 	frzTable(){
 		return this;
 	}
+	changeShow(){
+		var bigBoxShow=this.smallWidth*ModuleDefaults.count.show;
+		$(".col-xs-21").width(bigBoxShow);
+	}
 	goRightScroll(){
+		var srcollSpeed=ModuleDefaults.speed*1000;
 		var srcollWidth= ($('.content_box2').width()+3)*ModuleDefaults.count.slide;
 		$( ".content_box2" ).animate({
 					left: "+="+srcollWidth+"",
-				},200);
+				},srcollSpeed);
 		return this;
 	}
 	goLeftScroll(){
+		var srcollSpeed=ModuleDefaults.speed*1000;
 		var srcollWidth= ($('.content_box2').width()+3)*ModuleDefaults.count.slide;
 		$( ".content_box2" ).animate({
 					left: "-="+srcollWidth+"",
-				},200);
+				},srcollSpeed);
 		return this;
 	}
 	// srcollRight(){
