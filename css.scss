@@ -24,37 +24,42 @@ $classname: 'frzTable';
 	*{
 		margin: 0;
 		padding:0; 
+		box-sizing: border-box;
 	}
 	td{
 		overflow: hidden;
 	}
+	
 	.grayBox{
-		width: 100%;
+		color: #737373;
+		font-weight: 400;
+		text-align: center;
+		line-height: 70px;
 		height: 70px;
-		background: gray;
-		border: 1px solid white;
+		background: #f1f1f1;
+		border: 1px solid #e2e2e2;
 	}
-	.overH{
-		overflow: hidden;
-		// position: relative;
-	}
+
+	// .overH{
+	// 	overflow: hidden;
+	// 	// position: relative;
+	// }
 	.content_box{
-		display: block;
-		height: 70px;
+		width:2000px;
+		// height: 70px;
 		background: #ddd;
 		overflow: hidden;
 		// transform:translateX(-90px);
 		// border: 1px solid white;
 	}
-	.col-xs-21{
-		width: 800px
-	}
+
 	.height100{
 		height: 100%;
 	}
 	.content_box2{
 		// width: 120px;
 		text-align: center;
+		float: left;
 		line-height: 70px;
 		// font-family: 'Verdana';
 		font-size: 14px;
@@ -63,7 +68,7 @@ $classname: 'frzTable';
 		height: 70px;
 		cursor: pointer;
 		background: white;
-		border: .5px solid #e2e2e2;
+		border: 1px solid #e2e2e2;
 		// &:hover{
 		// 	background: #fff9e3;
 		// }
@@ -78,15 +83,22 @@ $classname: 'frzTable';
 			// font-family:"微軟正黑體";
 		}
 	}
+	.boxHead{
+		position: relative;
+		background: #eaedf2;
+		height: 50px;
+		line-height: 65px;
+		font-weight: normal;
+	}
 	.slide_right{
 		position: absolute;
 		right: 0;
 		top:50%;
-		margin-top: -30px;
+		margin-top: -20px;
 		color: white;
 		cursor: pointer;
 		z-index: 99;
-		padding: 20px 10px;
+		padding: 14px 5px;
 		background: rgba(0,0,0,.3);	
 	}
 	.slide_left{
@@ -94,11 +106,20 @@ $classname: 'frzTable';
 		left: 0;
 		top: 50%;
 		color: white;
-		margin-top: -30px;
+		margin-top: -20px;
 		cursor: pointer;
 		z-index: 99;
-		padding: 20px 10px;
+		padding: 14px 5px;
 		background: rgba(0,0,0,.3);	
+	}
+	// .scroll_left{
+	// 	width: 100%;
+	// 	overflow: hidden;
+	// }
+	.main_box{
+		border-right: 1px solid #e2e2e2; 
+		max-width: 300px;
+		overflow: hidden;
 	}
 	.bigbig{
 		width: 400px;
@@ -112,6 +133,20 @@ $classname: 'frzTable';
 	.hight_light{
 		background: #f7f7f7;
 	}
+	.headTitle{
+		position: absolute;
+		height: 20px;
+		line-height: 20px;
+		font-weight: bold;
+	}
+	.titleGo{
+		bottom: 0;
+		left: 0;
+	}
+	.titleBack{
+		right: 0;
+		top: 0;
+	}
 	// .bigbox{
 	// 	height: 50px;
 	// 	transform:translateX(-90px);
@@ -120,12 +155,25 @@ $classname: 'frzTable';
 
 	// style on phone device
 	@media screen and (min-width: $screen-tablet) {
+		.main_box{
+		max-width: 768px;
+		// border-left:1px solid #e2e2e2;
+	}
 		// style on tablet device
 	}
 	@media screen and (min-width: $screen-desktop) {
+	.main_box{
+		max-width: 960px;
+		// border-left:1px solid #e2e2e2;
+	}
 		// style on desktop device
 	}
 	@media screen and (min-width: $screen-lg-desktop) {
+		.main_box{
+		max-width:1200px;
+		// border-left:1px solid #e2e2e2;
+	}
+
 		// style on desktop device
 	}
 	&.#{$classname}_modifier {

@@ -4,7 +4,7 @@ const ModuleDefaults =  {
         // M版時每次點擊往前往後移動幾格儲存格
         slide: 2, // [number] 
         // M版時一個畫面show幾格儲存格
-        show: 4// [number] 
+        show: 3// [number] 
     },
     // 設定花多久時間移動完成
     speed: .3, // [number] 
@@ -43,9 +43,27 @@ class Module {
 		        slider=slider+moveStep;
 		        Module.prototype.goLeftScroll();
 		      }
-		});	
-		this.changeShow();
-		this.selectBox();
+		});
+		//判定瀏覽器寬度設定格子數量	
+		var BoxShow=($(".main_box").width()) /7;
+		var widowWidth= $(window).width();
+		$(".content_box2").width(BoxShow);
+		$(window).resize(function() {
+			var widowWidth= $(window).width();
+			console.log(widowWidth);
+		  	if(widowWidth<=968){
+		  		Module.prototype.changeShow();
+		  		return this;
+		  	}else{
+		  		var BoxShow=($(".main_box").width()) /7;
+				$(".content_box2").width(BoxShow);
+		  		return this;
+		  	}
+		});//判定瀏覽器寬度設定格子數
+		
+		this.selectBox();//表格選擇
+		// this.changeShow();
+		
 		// this.addColNum();
 		return this;
 	}
@@ -62,21 +80,27 @@ class Module {
 			var selectIndex = $('.select').index()+1;//:nth-child()的索引值從1開始
 			console.log(selectIndex);
 			$(".content_box2:nth-child(" + selectIndex +")").addClass( "hight_light" );
+			$(".boxHead:nth-child(" + selectIndex +")").removeClass( "hight_light" );
 			$(this).removeClass('hight_light');
 		});
 		return this;
 	}
 	changeShow(){
-		var borderSpace= ModuleDefaults.count.show * 1;
-		var BoxShow=($(".col-xs-21").width()-borderSpace) / ModuleDefaults.count.show;
+		var borderSpace= ModuleDefaults.count.show * 1-1;
+		// var borderSpace= ModuleDefaults.count.show * 1;
+		var BoxShow=($(".main_box").width()-borderSpace) / ModuleDefaults.count.show;
 		console.log(BoxShow);
 		$(".content_box2").width(BoxShow);
-		$('.content_box').width((BoxShow + 2)*7);
+		// var main_boxwidth=($(".content_box2").width()+1.5)*ModuleDefaults.count.show;
+		// console.log(main_boxwidth);
+		// $(".main_box").width(main_boxwidth);
+	 	// $('.content_box').width((BoxShow)*7);
+		// $('.content_box').width((BoxShow + 2)*7);
 		return this;
 	}
 	goRightScroll(){
 		var srcollSpeed=ModuleDefaults.speed*1000;
-		var srcollWidth= ($('.content_box2').width()+1)*ModuleDefaults.count.slide;
+		var srcollWidth= ($('.content_box2').width()+1)*ModuleDefaults.count.slide+1;
 		$( ".content_box2" ).animate({
 					left: "+="+srcollWidth+"",
 				},srcollSpeed);
@@ -84,7 +108,7 @@ class Module {
 	}
 	goLeftScroll(){
 		var srcollSpeed=ModuleDefaults.speed*1000;
-		var srcollWidth= ($('.content_box2').width()+1)*ModuleDefaults.count.slide;
+		var srcollWidth= ($('.content_box2').width()+1)*ModuleDefaults.count.slide+1;
 		$( ".content_box2" ).animate({
 					left: "-="+srcollWidth+"",
 				},srcollSpeed);
