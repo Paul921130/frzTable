@@ -38,7 +38,7 @@ class Module {
 		});
 		this.slide_right.on('click',function(){
 			if(slider + moveStep <= 7){
-		        slider=slider+moveStep;
+		        slider=slider + moveStep;
 		        Module.prototype.goLeftScroll();
 		      }
 		});
@@ -119,7 +119,7 @@ class Module {
 	}
 	goLeftScroll(){
 		var srcollSpeed=ModuleDefaults.speed*1000;
-		var srcollWidth= ($('.content_box2').width()+1)*ModuleDefaults.count.slide+1;
+		var srcollWidth= ($('.content_box2').width()+1) * ModuleDefaults.count.slide+1;
 		$( ".content_box2" ).animate({
 					left: "-="+srcollWidth+"",
 				},srcollSpeed);
