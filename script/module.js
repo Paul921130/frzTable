@@ -43,10 +43,9 @@ class Module {
 		        slider= slider + moveStep;
 		        console.log(slider);
 		        Module.prototype.goLeftScroll();//這裡是剛好滾完的狀態,如slide:2 show:3
-		  		
-		      }
+		    }
 		      //明天處理!!!!!!!!!!!!!!
-		      else if(7- (slider + moveStep)>0){
+		      else if(7-(slider + moveStep)>0){
 		      	var srcollSpeed=ModuleDefaults.speed*1000;
 		      	var srcollWidth= ($('.content_box2').width()+1)*(7-(slider + moveStep));
 				$( ".content_box2" ).animate({
