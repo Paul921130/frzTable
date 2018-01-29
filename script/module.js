@@ -34,12 +34,27 @@ class Module {
 			if(slider - moveStep >= 0){
 				slider=slider-moveStep;
         		Module.prototype.goRightScroll();
-			}
+			}else{
+		      	return this;
+		     }
 		});
 		this.slide_right.on('click',function(){
-			if(slider + moveStep <= 7){
-		        slider=slider + moveStep;
-		        Module.prototype.goLeftScroll();
+			if(slider + moveStep <= 7-moveStep){
+		        slider= slider + moveStep;
+		        console.log(slider);
+		        Module.prototype.goLeftScroll();//這裡是剛好滾完的狀態,如slide:2 show:3
+		  		
+		      }
+		      //明天處理!!!!!!!!!!!!!!
+		      else if(7- (slider + moveStep)>0){
+		      	var srcollSpeed=ModuleDefaults.speed*1000;
+		      	var srcollWidth= ($('.content_box2').width()+1)*(7-(slider + moveStep));
+				$( ".content_box2" ).animate({
+					left: "-="+srcollWidth+"",
+				},srcollSpeed);
+				slider= slider + moveStep;
+		      }else{
+		      	return this;
 		      }
 		});
 		this.setShow();
@@ -126,6 +141,9 @@ class Module {
 					left: "-="+srcollWidth+"",
 				},srcollSpeed);
 		return this;
+	}
+	srcollEnd(){
+
 	}
 	// addColNum(){
 	// 	var s = $( ".content_box2" ).toArray();

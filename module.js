@@ -229,13 +229,27 @@ var Module = function () {
 				if (slider - moveStep >= 0) {
 					slider = slider - moveStep;
 					Module.prototype.goRightScroll();
+				} else {
+					return this;
 				}
 			});
 			this.slide_right.on('click', function () {
-				if (slider + moveStep <= 7) {
+				if (slider + moveStep <= 7 - moveStep) {
 					slider = slider + moveStep;
-					Module.prototype.goLeftScroll();
+					console.log(slider);
+					Module.prototype.goLeftScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
 				}
+				//明天處理!!!!!!!!!!!!!!
+				else if (7 - (slider + moveStep) > 0) {
+						var srcollSpeed = ModuleDefaults.speed * 1000;
+						var srcollWidth = ($('.content_box2').width() + 1) * (7 - (slider + moveStep));
+						$(".content_box2").animate({
+							left: "-=" + srcollWidth + ""
+						}, srcollSpeed);
+						slider = slider + moveStep;
+					} else {
+						return this;
+					}
 			});
 			this.setShow();
 			//判定瀏覽器寬度設定格子數量	
@@ -337,6 +351,9 @@ var Module = function () {
 			}, srcollSpeed);
 			return this;
 		}
+	}, {
+		key: 'srcollEnd',
+		value: function srcollEnd() {}
 		// addColNum(){
 		// 	var s = $( ".content_box2" ).toArray();
 		// 	console.log(s[3]);
