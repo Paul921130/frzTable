@@ -46,6 +46,7 @@ class Module {
 		//判定瀏覽器寬度設定格子數量	
 		$(window).resize(function() {
 			var widowWidth= $(window).width();
+
 			console.log(widowWidth);
 			$(".content_box2").width(BoxShow);
 		  	if(widowWidth<=968){
@@ -57,6 +58,7 @@ class Module {
 		  		return this;
 		  	}
 		});//判定瀏覽器寬度設定格子數
+		
 		this.selectBox();//表格選擇
 		// this.changeShow();
 		
@@ -86,7 +88,7 @@ class Module {
 	setShow(){
 		var widowWidth= $(window).width();
 
-		if(widowWidth>=968){
+		if(widowWidth >= 968){
 			var BoxShow=($(".main_box").width()/7)-2;//左右各1px的border!!!!
 			console.log(BoxShow);
 			var widowWidth= $(window).width();

@@ -241,6 +241,7 @@ var Module = function () {
 			//判定瀏覽器寬度設定格子數量	
 			$(window).resize(function () {
 				var widowWidth = $(window).width();
+
 				console.log(widowWidth);
 				$(".content_box2").width(BoxShow);
 				if (widowWidth <= 968) {
@@ -252,6 +253,7 @@ var Module = function () {
 					return this;
 				}
 			}); //判定瀏覽器寬度設定格子數
+
 			this.selectBox(); //表格選擇
 			// this.changeShow();
 

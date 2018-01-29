@@ -117,7 +117,7 @@ $classname: 'frzTable';
 	.main_box{
 		box-sizing: border-box;
 		// border-right: 1px solid #e2e2e2; 
-		max-width:360px;//為什麼是375(iphone的寬)!!!我要搞清楚
+		max-width:375px;//為什麼是375(iphone的寬)!!!我要搞清楚
 		overflow: hidden;
 	}
 	.select{
@@ -172,11 +172,6 @@ $classname: 'frzTable';
 		border-width: 15px 15px 0 0;
 		border-color: #ff8e25 transparent transparent transparent;
 	}
-	// .bigbox{
-	// 	height: 50px;
-	// 	transform:translateX(-90px);
-	// 	width: 630px;//實際上就是小格的寬乘7
-	// }
 
 	// style on phone device
 	@media screen and (min-width: $screen-tablet) {
