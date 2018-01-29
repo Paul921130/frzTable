@@ -58,6 +58,7 @@ $classname: 'frzTable';
 		height: 100%;
 	}
 	.content_box2{
+		font-family: '微軟正黑體';
 		position: relative;
 		text-align: center;
 		float: left;
@@ -110,9 +111,9 @@ $classname: 'frzTable';
 		background: rgba(0,0,0,.3);	
 	}
 	.main_box{
-		box-sizing:border-box;
+		box-sizing: border-box;
 		// border-right: 1px solid #e2e2e2; 
-		max-width:375px;//為什麼是375(iphone的寬)!!!我要搞清楚
+		max-width:360px;//為什麼是375(iphone的寬)!!!我要搞清楚
 		overflow: hidden;
 	}
 	.select{
@@ -162,6 +163,13 @@ $classname: 'frzTable';
 		border-style: solid;
 		border-width: 15px 15px 0 0;
 		border-color: #ff8e25 transparent transparent transparent;
+	}
+	.tri_None{
+		width: 0;
+		height: 0;
+		border-style: solid;
+		border-width: 15px 15px 0 0;
+		border-color: transparent transparent transparent transparent;
 	}
 	// .bigbox{
 	// 	height: 50px;
