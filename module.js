@@ -221,8 +221,6 @@ var Module = function () {
 	_createClass(Module, [{
 		key: 'init',
 		value: function init() {
-			var bigWidth = $(".col-xs-21").width();
-			console.log(bigWidth);
 			var slider = 0;
 			var moveStep = ModuleDefaults.count.slide;
 			$('.content_box2').attr("style", 'left: 0px;');
@@ -239,23 +237,21 @@ var Module = function () {
 					Module.prototype.goLeftScroll();
 				}
 			});
+			this.setShow();
 			//判定瀏覽器寬度設定格子數量	
-			var BoxShow = $(".main_box").width() / 7;
-			var widowWidth = $(window).width();
-			$(".content_box2").width(BoxShow);
 			$(window).resize(function () {
 				var widowWidth = $(window).width();
 				console.log(widowWidth);
+				$(".content_box2").width(BoxShow);
 				if (widowWidth <= 968) {
 					Module.prototype.changeShow();
 					return this;
 				} else {
-					var BoxShow = $(".main_box").width() / 7;
+					var BoxShow = $(".main_box").width() / 7 - 2;
 					$(".content_box2").width(BoxShow);
 					return this;
 				}
 			}); //判定瀏覽器寬度設定格子數
-
 			this.selectBox(); //表格選擇
 			// this.changeShow();
 
@@ -286,18 +282,36 @@ var Module = function () {
 			});
 			return this;
 		}
+
+		//判定瀏覽器寬度設定格子數量
+
+	}, {
+		key: 'setShow',
+		value: function setShow() {
+			var widowWidth = $(window).width();
+
+			if (widowWidth >= 968) {
+				var BoxShow = $(".main_box").width() / 7 - 2; //左右各1px的border!!!!
+				console.log(BoxShow);
+				var widowWidth = $(window).width();
+				$(".content_box2").width(BoxShow);
+			} else {
+				Module.prototype.changeShow();
+				return this;
+			}
+		}
 	}, {
 		key: 'changeShow',
 		value: function changeShow() {
-			var borderSpace = ModuleDefaults.count.show * 1 - 1;
-			// var borderSpace= ModuleDefaults.count.show * 1;
+			// var borderSpace= ModuleDefaults.count.show * 1-1;
+			var borderSpace = ModuleDefaults.count.show * 2;
 			var BoxShow = ($(".main_box").width() - borderSpace) / ModuleDefaults.count.show;
 			console.log(BoxShow);
 			$(".content_box2").width(BoxShow);
 			// var main_boxwidth=($(".content_box2").width()+1.5)*ModuleDefaults.count.show;
 			// console.log(main_boxwidth);
 			// $(".main_box").width(main_boxwidth);
-			// $('.content_box').width((BoxShow)*7);
+			// $('.main_box').width((BoxShow)*7);
 			// $('.content_box').width((BoxShow + 2)*7);
 			return this;
 		}
