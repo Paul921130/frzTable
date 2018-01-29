@@ -42,12 +42,14 @@ $classname: 'frzTable';
 		color: #737373;
 		font-weight: 400;
 		text-align: center;
-		line-height: 70px;
+		line-height: 20px;
 		height: 70px;
 		background: #f1f1f1;
 		border: 1px solid #e2e2e2;
 	}
-
+	.mt-10{
+		height: 10px;
+	}
 	.content_box{
 		width:2000px;
 		background: #ddd;
@@ -58,7 +60,7 @@ $classname: 'frzTable';
 		height: 100%;
 	}
 	.content_box2{
-		font-family: '微軟正黑體';
+		font-family: 'Verdana';
 		position: relative;
 		text-align: center;
 		float: left;
@@ -150,26 +152,23 @@ $classname: 'frzTable';
 	}
 	.cheap{
 		display: block;
-		font-size: 14;
+		font-size: 12px;
 		position: absolute;
 		top: 6px;
 		left: 10px;
 		line-height: 20px;
-		color: #ff8f25;   
+		color: #ff8f25; 
+		font-family: "微軟正黑體";  
 	}
 	.tri{
+		position: absolute;
+		top: 0;
+		left: 0;
 		width: 0;
 		height: 0;
 		border-style: solid;
 		border-width: 15px 15px 0 0;
 		border-color: #ff8e25 transparent transparent transparent;
-	}
-	.tri_None{
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-width: 15px 15px 0 0;
-		border-color: transparent transparent transparent transparent;
 	}
 	// .bigbox{
 	// 	height: 50px;
