@@ -21,6 +21,7 @@ $classname: 'frzTable';
 // -------------------------------------
 //以下範例可以刪除，改為您自已的CSS Code
 .#{$classname} {
+	position: relative;
 	*{
 		margin: 0;
 		padding:0; 
@@ -31,11 +32,30 @@ $classname: 'frzTable';
 		margin: 0;
 		padding:0; 
 		box-sizing: border-box;
-
 	}
-	td{
-		overflow: hidden;
+	.dot{
+		position: absolute;
+		top: -20px;
+		right: 10px;
+		z-index: 99;
+		padding:5px; 
+		ul>li{
+			list-style: none;
+			float: left;
+			margin-left: 3px;
+			width: 10px;
+			height: 10px;
+			border-radius:50%;
+			background: #eaedf2;
+			cursor: pointer; 
+		}
+		.dotSelect{
+			background: #ff8e25;
+		}
 	}
+	// td{
+	// 	overflow: hidden;
+	// }
 	
 	.grayBox{
 		position: relative;
@@ -96,7 +116,7 @@ $classname: 'frzTable';
 		cursor: pointer;
 		z-index: 99;
 		padding: 14px 5px;
-		background: rgba(0,0,0,.3);	
+		background: rgba(0,0,0,.3 );	
 	}
 	.slide_right{
 		position: absolute;
@@ -192,12 +212,14 @@ $classname: 'frzTable';
 	.year1{
 		top: -20px;
 	}
+	.grayBox{
+		line-height: 70px;
+	}
 		// style on desktop device
+	
 	}
 	@media screen and (min-width: $screen-lg-desktop) {
-	.year1{		
-		top:0px;
-	}
+	
 	.main_box{
 		max-width:1199px;
 		// border-left:1px solid #e2e2e2;
