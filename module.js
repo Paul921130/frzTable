@@ -223,6 +223,8 @@ var Module = function () {
 		value: function init() {
 			var slider = 0;
 			var moveStep = ModuleDefaults.count.slide;
+			var show = ModuleDefaults.count.show;
+			console.log(show - moveStep);
 			$('.content_box2').attr("style", 'left: 0px;');
 			console.log(this.smallWidth);
 			this.slide_left.on('click', function () {
@@ -233,29 +235,19 @@ var Module = function () {
 					return this;
 				}
 			});
+
 			this.slide_right.on('click', function () {
-				if (slider + moveStep <= 7 - moveStep) {
+				if (slider + moveStep < 7 - moveStep) {
 					slider = slider + moveStep;
 					console.log(slider);
 					Module.prototype.goLeftScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
 				}
 				//明天處理!!!!!!!!!!!!!!
-				else if (7 - (slider + moveStep) > 0) {
-						var srcollSpeed = ModuleDefaults.speed * 1000;
-						var srcollWidth = ($('.content_box2').width() + 1) * (7 - (slider + moveStep));
-						$(".content_box2").animate({
-							left: "-=" + srcollWidth + ""
-						}, srcollSpeed);
-						slider = slider + moveStep;
-					} else {
-						return this;
-					}
 			});
 			this.setShow();
 			//判定瀏覽器寬度設定格子數量	
 			$(window).resize(function () {
 				var widowWidth = $(window).width();
-
 				console.log(widowWidth);
 				$(".content_box2").width(BoxShow);
 				if (widowWidth <= 968) {
