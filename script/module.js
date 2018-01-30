@@ -35,6 +35,7 @@ class Module {
         var srcollSpeed = ModuleDefaults.speed * 1000;
         // console.log(show-moveStep);
         $('.content_box2').attr("style", 'left: 0px;');
+
         // console.log(this.smallWidth);
 
         //正在處理中!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -52,6 +53,7 @@ class Module {
                 $(".content_box2").animate({
                     left: "+=" + srcollWidth + "",
                 }, srcollSpeed);
+               
                 slider = Defaultshow;
                 return this;
             }
@@ -76,6 +78,7 @@ class Module {
                 $(".content_box2").animate({
                     left: "-=" + srcollWidth + "",
                 }, srcollSpeed);
+              
                 slider = slider + (7 - slider);
 
                 return this;
@@ -89,12 +92,14 @@ class Module {
             var widowWidth = $(window).width();
             console.log(widowWidth);
             $(".content_box2").width(BoxShow);
+         
             if (widowWidth <= 968) {
                 Module.prototype.changeShow();
                 return this;
             } else {
                 var BoxShow = ($(".main_box").width()) / 7 - 2;
                 $(".content_box2").width(BoxShow);
+              
                 return this;
             }
         }); //判定瀏覽器寬度設定格子數
@@ -131,6 +136,7 @@ class Module {
             var BoxShow = ($(".main_box").width() / 7) - 2; //左右各1px的border!!!!
             var widowWidth = $(window).width();
             $(".content_box2").width(BoxShow);
+          
         } else {
             Module.prototype.changeShow();
             return this;
@@ -140,6 +146,7 @@ class Module {
         var borderSpace = ModuleDefaults.count.show * 2;
         var BoxShow = ($(".main_box").width() - borderSpace) / ModuleDefaults.count.show;
         $(".content_box2").width(BoxShow);
+     
         return this;
     }
     goRightScroll() {
@@ -148,6 +155,7 @@ class Module {
         $(".content_box2").animate({
             left: "+=" + srcollWidth + "",
         }, srcollSpeed);
+        
         return this;
     }
     goLeftScroll() {
@@ -156,6 +164,7 @@ class Module {
         $(".content_box2").animate({
             left: "-=" + srcollWidth + "",
         }, srcollSpeed);
+       
         return this;
     }
 

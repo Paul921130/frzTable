@@ -230,6 +230,7 @@ var Module = function () {
             var srcollSpeed = ModuleDefaults.speed * 1000;
             // console.log(show-moveStep);
             $('.content_box2').attr("style", 'left: 0px;');
+
             // console.log(this.smallWidth);
 
             //正在處理中!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -247,6 +248,7 @@ var Module = function () {
                     $(".content_box2").animate({
                         left: "+=" + srcollWidth + ""
                     }, srcollSpeed);
+
                     slider = Defaultshow;
                     return this;
                 }
@@ -271,6 +273,7 @@ var Module = function () {
                     $(".content_box2").animate({
                         left: "-=" + srcollWidth + ""
                     }, srcollSpeed);
+
                     slider = slider + (7 - slider);
 
                     return this;
@@ -283,12 +286,14 @@ var Module = function () {
                 var widowWidth = $(window).width();
                 console.log(widowWidth);
                 $(".content_box2").width(BoxShow);
+
                 if (widowWidth <= 968) {
                     Module.prototype.changeShow();
                     return this;
                 } else {
                     var BoxShow = $(".main_box").width() / 7 - 2;
                     $(".content_box2").width(BoxShow);
+
                     return this;
                 }
             }); //判定瀏覽器寬度設定格子數
@@ -345,6 +350,7 @@ var Module = function () {
             var borderSpace = ModuleDefaults.count.show * 2;
             var BoxShow = ($(".main_box").width() - borderSpace) / ModuleDefaults.count.show;
             $(".content_box2").width(BoxShow);
+
             return this;
         }
     }, {
@@ -355,6 +361,7 @@ var Module = function () {
             $(".content_box2").animate({
                 left: "+=" + srcollWidth + ""
             }, srcollSpeed);
+
             return this;
         }
     }, {
@@ -365,6 +372,7 @@ var Module = function () {
             $(".content_box2").animate({
                 left: "-=" + srcollWidth + ""
             }, srcollSpeed);
+
             return this;
         }
     }]);
