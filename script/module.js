@@ -4,7 +4,7 @@ const ModuleDefaults = {
         // M版時每次點擊往前往後移動幾格儲存格
         slide: 3, // [number] 
         // M版時一個畫面show幾格儲存格
-        show: 3 // [number] 
+        show: 3// [number] 
     },
     // 設定花多久時間移動完成
     speed: .3, // [number] 
