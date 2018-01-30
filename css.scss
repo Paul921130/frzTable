@@ -63,7 +63,6 @@ $classname: 'frzTable';
 	.content_box2{
 		position: relative;
 		text-align: center;
-		display: inline-block;
 		float: left;
 		line-height: 70px;
 		font-size: 14px;
@@ -149,6 +148,15 @@ $classname: 'frzTable';
 		right: 5px;
 		color: #259e7b;
 	}
+	.year1{
+		position: absolute;
+		font-weight: bolder;
+		display:block;
+		z-index:99;
+		top:-2px;
+		right: 5px;
+		color: #259e7b;
+	}
 	.cheap{
 		display: block;
 		font-size: 12px;
@@ -182,9 +190,15 @@ $classname: 'frzTable';
 		max-width: 979px;
 		// border-left:1px solid #e2e2e2;
 	}
+	.year1{
+		top: -20px;
+	}
 		// style on desktop device
 	}
 	@media screen and (min-width: $screen-lg-desktop) {
+	.year1{		
+		top:0px;
+	}
 	.main_box{
 		max-width:1199px;
 		// border-left:1px solid #e2e2e2;
