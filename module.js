@@ -192,7 +192,7 @@ var ModuleName = 'frzTable';
 var ModuleDefaults = {
 	count: {
 		// M版時每次點擊往前往後移動幾格儲存格
-		slide: 2, // [number] 
+		slide: 3, // [number] 
 		// M版時一個畫面show幾格儲存格
 		show: 3 // [number] 
 	},
@@ -221,12 +221,16 @@ var Module = function () {
 	_createClass(Module, [{
 		key: 'init',
 		value: function init() {
-			var slider = 0;
+			var slider = ModuleDefaults.count.show;
+
 			var moveStep = ModuleDefaults.count.slide;
-			var show = ModuleDefaults.count.show;
-			console.log(show - moveStep);
+
+			var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
+
+			var srcollSpeed = ModuleDefaults.speed * 1000;
+			// console.log(show-moveStep);
 			$('.content_box2').attr("style", 'left: 0px;');
-			console.log(this.smallWidth);
+			// console.log(this.smallWidth);
 			this.slide_left.on('click', function () {
 				if (slider - moveStep >= 0) {
 					slider = slider - moveStep;
@@ -236,14 +240,24 @@ var Module = function () {
 				}
 			});
 
+			//明天處理!!!!!!!!!!!!!!
 			this.slide_right.on('click', function () {
-				if (slider + moveStep < 7 - moveStep) {
+				if (slider + moveStep <= 7) {
 					slider = slider + moveStep;
 					console.log(slider);
 					Module.prototype.goLeftScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
-				}
-				//明天處理!!!!!!!!!!!!!!
+				} else if (7 - slider > 0) {
+					console.log('天啊!!!!今天好冷!');
+					var srcollWidth = ($('.content_box2').width() + 1) * (7 - slider);
+					$(".content_box2").animate({
+						left: "-=" + srcollWidth + ""
+					}, srcollSpeed);
+					slider = slider + (7 - slider);
+					console.log(slider);
+					return this;
+				};
 			});
+
 			this.setShow();
 			//判定瀏覽器寬度設定格子數量	
 			$(window).resize(function () {
@@ -283,7 +297,7 @@ var Module = function () {
 				$(".content_box2").removeClass('select').removeClass('hight_light');
 				$(this).addClass('select').siblings().addClass('hight_light');
 				var selectIndex = $('.select').index() + 1; //:nth-child()的索引值從1開始
-				console.log(selectIndex);
+				// console.log(selectIndex);
 				$(".content_box2:nth-child(" + selectIndex + ")").addClass("hight_light");
 				$(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
 				$(this).removeClass('hight_light');
@@ -300,7 +314,7 @@ var Module = function () {
 
 			if (widowWidth >= 968) {
 				var BoxShow = $(".main_box").width() / 7 - 2; //左右各1px的border!!!!
-				console.log(BoxShow);
+				// console.log(BoxShow);
 				var widowWidth = $(window).width();
 				$(".content_box2").width(BoxShow);
 			} else {
@@ -311,10 +325,9 @@ var Module = function () {
 	}, {
 		key: 'changeShow',
 		value: function changeShow() {
-			// var borderSpace= ModuleDefaults.count.show * 1-1;
 			var borderSpace = ModuleDefaults.count.show * 2;
 			var BoxShow = ($(".main_box").width() - borderSpace) / ModuleDefaults.count.show;
-			console.log(BoxShow);
+			// console.log(BoxShow);
 			$(".content_box2").width(BoxShow);
 			// var main_boxwidth=($(".content_box2").width()+1.5)*ModuleDefaults.count.show;
 			// console.log(main_boxwidth);
@@ -345,15 +358,14 @@ var Module = function () {
 		}
 	}, {
 		key: 'srcollEnd',
-		value: function srcollEnd() {}
-		// addColNum(){
-		// 	var s = $( ".content_box2" ).toArray();
-		// 	console.log(s[3]);
-		// 	for( var i=0; i++; i<=42){
-		// 		$( ".content_box2" ).each().addClass("col"+i+"");
-		// 	}
-		// }
-
+		value: function srcollEnd() {
+			var srcollSpeed = ModuleDefaults.speed * 1000;
+			var srcollWidth = ($('.content_box2').width() + 1) * ModuleDefaults.count.slide + 1;
+			$(".content_box2").animate({
+				left: "+=" + srcollWidth + ""
+			}, srcollSpeed);
+			return this;
+		}
 	}]);
 
 	return Module;
