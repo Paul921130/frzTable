@@ -90,27 +90,25 @@ $classname: 'frzTable';
 		// line-height: 65px;
 		font-weight: normal;
 	}
-	.slide_right{
-		position: absolute;
-		right: 0;
-		top:50%;
-		margin-top: -20px;
+	
+	.slide_btn{
 		color: white;
 		cursor: pointer;
 		z-index: 99;
 		padding: 14px 5px;
 		background: rgba(0,0,0,.3);	
 	}
+	.slide_right{
+		position: absolute;
+		right: 0;
+		top:50%;
+		margin-top: -20px;
+	}
 	.slide_left{
 		position: absolute;
 		left: 0;
 		top: 50%;
-		color: white;
 		margin-top: -20px;
-		cursor: pointer;
-		z-index: 99;
-		padding: 14px 5px;
-		background: rgba(0,0,0,.3);	
 	}
 	.main_box{
 		box-sizing: border-box;
