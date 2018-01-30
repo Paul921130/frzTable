@@ -244,7 +244,7 @@ var Module = function () {
                 } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
                     console.log('嘿!我在這!!!!!');
                     var srcollSpeed = ModuleDefaults.speed * 1000;
-                    var srcollWidth = ($('.content_box2').width() + 1.5) * (slider - Defaultshow);
+                    var srcollWidth = ($('.content_box2').width() + 2) * (slider - Defaultshow) + .5; //1px的border的一半
                     $(".content_box2").animate({
                         left: "+=" + srcollWidth + ""
                     }, srcollSpeed);
@@ -269,7 +269,7 @@ var Module = function () {
                     Module.prototype.goLeftScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
                 } else if (7 - slider > 0) {
                     console.log('天啊!!!!今天好冷!');
-                    var srcollWidth = ($('.content_box2').width() + 1.5) * (7 - slider);
+                    var srcollWidth = ($('.content_box2').width() + 2) * (7 - slider) + .5; //1px的border的一半
                     $(".content_box2").animate({
                         left: "-=" + srcollWidth + ""
                     }, srcollSpeed);
@@ -357,7 +357,7 @@ var Module = function () {
         key: 'goRightScroll',
         value: function goRightScroll() {
             var srcollSpeed = ModuleDefaults.speed * 1000;
-            var srcollWidth = ($('.content_box2').width() + 1.5) * ModuleDefaults.count.slide + 1;
+            var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide + .5; //1px的border的一半
             $(".content_box2").animate({
                 left: "+=" + srcollWidth + ""
             }, srcollSpeed);
@@ -368,7 +368,7 @@ var Module = function () {
         key: 'goLeftScroll',
         value: function goLeftScroll() {
             var srcollSpeed = ModuleDefaults.speed * 1000;
-            var srcollWidth = ($('.content_box2').width() + 1.5) * ModuleDefaults.count.slide + 1;
+            var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide + .5; //1px的border的一半
             $(".content_box2").animate({
                 left: "-=" + srcollWidth + ""
             }, srcollSpeed);
