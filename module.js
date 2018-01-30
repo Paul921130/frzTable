@@ -192,7 +192,7 @@ var ModuleName = 'frzTable';
 var ModuleDefaults = {
     count: {
         // M版時每次點擊往前往後移動幾格儲存格
-        slide: 3, // [number] 
+        slide: 1, // [number] 
         // M版時一個畫面show幾格儲存格
         show: 3 // [number] 
     },
@@ -232,7 +232,6 @@ var Module = function () {
             $('.content_box2').attr("style", 'left: 0px;');
 
             // console.log(this.smallWidth);
-
             //正在處理中!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             // slide為1的時候會有問題
             this.slide_left.on('click', function () {
