@@ -297,11 +297,8 @@ var Module = function () {
                     return this;
                 }
             }); //判定瀏覽器寬度設定格子數
-
-            this.selectBox(); //表格選擇
+            this.selectBox(); //表格選擇function
             // this.changeShow();
-
-            // this.addColNum();
             return this;
         }
     }, {
@@ -317,11 +314,10 @@ var Module = function () {
     }, {
         key: 'selectBox',
         value: function selectBox() {
-            $(".content_box2").on('click', function () {
+            $(".content_box2:not(.boxHead)").on('click', function () {
                 $(".content_box2").removeClass('select').removeClass('hight_light');
                 $(this).addClass('select').siblings().addClass('hight_light');
                 var selectIndex = $('.select').index() + 1; //:nth-child()的索引值從1開始
-                // console.log(selectIndex);
                 $(".content_box2:nth-child(" + selectIndex + ")").addClass("hight_light");
                 $(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
                 $(this).removeClass('hight_light');
@@ -350,7 +346,6 @@ var Module = function () {
             var borderSpace = ModuleDefaults.count.show * 2;
             var BoxShow = ($(".main_box").width() - borderSpace) / ModuleDefaults.count.show;
             $(".content_box2").width(BoxShow);
-
             return this;
         }
     }, {
@@ -361,7 +356,6 @@ var Module = function () {
             $(".content_box2").animate({
                 left: "+=" + srcollWidth + ""
             }, srcollSpeed);
-
             return this;
         }
     }, {
@@ -372,7 +366,6 @@ var Module = function () {
             $(".content_box2").animate({
                 left: "-=" + srcollWidth + ""
             }, srcollSpeed);
-
             return this;
         }
     }]);
