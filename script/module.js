@@ -36,16 +36,35 @@ class Module {
 		// console.log(show-moveStep);
 		$('.content_box2').attr("style",'left: 0px;');
 		// console.log(this.smallWidth);
+		
+		//正在處理中!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+		// slide為1的時候會有問題
 		this.slide_left.on('click',function(){
-			if(slider - moveStep >= 0){
-				slider=slider-moveStep;
+			console.log(slider);
+			if( slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1){
+				slider = slider - moveStep;	
+				console.log(slider);
         		Module.prototype.goRightScroll();
-			}else{
-		      	return this;
-		     }
+			}else if( slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1){
+				console.log('嘿!我在這!!!!!')
+				var srcollSpeed= ModuleDefaults.speed * 1000;
+				var srcollWidth= ($('.content_box2').width() + 1)* ( slider - Defaultshow);
+				$( ".content_box2" ).animate({
+					left: "+="+srcollWidth+"",
+				},srcollSpeed);
+				slider = Defaultshow;
+				return this;
+			}
+		});
+		this.slide_left.on('click',function(){
+			console.log(slider);
+			if(moveStep===1 && slider - Defaultshow > 0 ){
+				slider = slider - moveStep;	
+        		Module.prototype.goRightScroll();
+			}
 		});
 			
-		 //明天處理!!!!!!!!!!!!!!
+		 //處理完成95%!!!!!!!!!!!!!!
 		this.slide_right.on('click',function(){
 		 	if( slider + moveStep <= 7){
 		        slider= slider + moveStep;
@@ -53,7 +72,7 @@ class Module {
 		        Module.prototype.goLeftScroll();//這裡是剛好滾完的狀態,如slide:2 show:3
 		    }else if(7 - slider > 0){
 		     console.log('天啊!!!!今天好冷!');
-		     var srcollWidth= ($('.content_box2').width()+1) * (7 - slider);
+		     var srcollWidth= ($('.content_box2').width() + 1) * ( 7 - slider);
 				$( ".content_box2" ).animate({
 					left: "-="+srcollWidth+"",
 				},srcollSpeed);
@@ -111,7 +130,6 @@ class Module {
 
 		if(widowWidth >= 968){
 			var BoxShow=($(".main_box").width()/7)-2;//左右各1px的border!!!!
-			// console.log(BoxShow);
 			var widowWidth= $(window).width();
 			$(".content_box2").width(BoxShow);
 		}else{
@@ -122,13 +140,7 @@ class Module {
 	changeShow(){
 		var borderSpace= ModuleDefaults.count.show * 2;
 		var BoxShow=($(".main_box").width()-borderSpace)/ ModuleDefaults.count.show;
-		// console.log(BoxShow);
 		$(".content_box2").width(BoxShow);
-		// var main_boxwidth=($(".content_box2").width()+1.5)*ModuleDefaults.count.show;
-		// console.log(main_boxwidth);
-		// $(".main_box").width(main_boxwidth);
-	 	// $('.main_box').width((BoxShow)*7);
-		// $('.content_box').width((BoxShow + 2)*7);
 		return this;
 	}
 	goRightScroll(){

@@ -61,7 +61,6 @@ $classname: 'frzTable';
 		height: 100%;
 	}
 	.content_box2{
-		font-family: 'Verdana';
 		position: relative;
 		text-align: center;
 		display: inline-block;
@@ -82,7 +81,6 @@ $classname: 'frzTable';
 		p{
 			color: #999999;
 			font-weight: normal;
-			font-family:"微軟正黑體";
 		}
 	}
 	.boxHead{
@@ -143,7 +141,6 @@ $classname: 'frzTable';
 		top: 0;
 	}
 	.year{
-		font-family: 'Arial';
 		position: absolute;
 		font-weight: bolder;
 		display:block;
@@ -159,8 +156,7 @@ $classname: 'frzTable';
 		top: 6px;
 		left: 10px;
 		line-height: 20px;
-		color: #ff8f25; 
-		font-family: "微軟正黑體";  
+		color: #ff8f25;  
 	}
 	.tri{
 		position: absolute;
@@ -169,7 +165,7 @@ $classname: 'frzTable';
 		width: 0;
 		height: 0;
 		border-style: solid;
-		border-width: 15px 15px 0 0;
+		border-width: 20px 20px 0 0;
 		border-color: #ff8e25 transparent transparent transparent;
 	}
 
