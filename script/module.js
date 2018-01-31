@@ -30,6 +30,7 @@ class Module {
         var $slide_right = $this.find(".slide_right");
         var $smallBox = $this.find(".content_box2");
         var $body = $this.children('.frzTable');
+
         console.log('跑了兩次!');
         console.log($this); //出來兩個一個是default 一個是rel
         console.log($smallBox);
@@ -46,6 +47,7 @@ class Module {
             console.log($this);
             self.goLeftScroll();
         });
+        
         $slide_right.on('click', function() {
             console.log($this);
             self.goRightScroll();
@@ -133,51 +135,21 @@ class Module {
     frzTable() {
         return this;
     }
-
-///////////////////////
-    // goRightSlider () {
-    //     var self = this;
-    //     var $this = this.$ele;
-    //     var $slide_left = $this.find(".slide_left");
-    //     var $slide_right = $this.find(".slide_right");
-    //     var moveStep= ModuleDefaults.count.slide;
-    //     $slide_right.on('click', function() { 
-    //         this.slider += moveStep;
-    //         if ( this.slider > 7 ) {
-    //             this.slider = 7;
-    //         }
-    //     });
-    //     console.log(this.slider);
-    //     return this.slider;
-    // }
-
-    // goLeftSlider () {
-    //     var self = this;
-    //     var $this = this.$ele;
-    //     var $slide_left = $this.find(".slide_left");
-    //     var $slide_right = $this.find(".slide_right");
-    //     var moveStep= ModuleDefaults.count.slide;
-    //    $slide_left.on('click', function() { 
-    //     this.slider -= moveStep;
-    //     if ( this.slider < 1 ) {
-    //         this.slider = 1;
-    //     }
-    // });
-    //     return this.slider;
-    // }
-/////////////////////goRightSlider ()是數字!!
-
     selectBox() {
-        $(".content_box2:not(.boxHead)").on('click', function() {
-            $(".content_box2").removeClass('select').removeClass('hight_light');
+        var self = this;
+        var $this = this.$ele;
+        var $smallBox = $this.find(".content_box2");
+        $smallBox.on('click', function() {
+            $('.content_box2').removeClass('select').removeClass('hight_light');
             $(this).addClass('select').siblings().addClass('hight_light');
             var selectIndex = $('.select').index() + 1; //:nth-child()的索引值從1開始
-            $(".content_box2:nth-child(" + selectIndex + ")").addClass("hight_light");
+            $this.find(".content_box2:nth-child(" + selectIndex + ")").removeClass("hight_light").addClass("hight_light");
+            // $(".content_box2:nth-child(" + selectIndex + ")").addClass("hight_light");
             $(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
             $(this).removeClass('hight_light');
         });
         return this;
-    }
+    }//為什麼上面的完全沒問題 可是下面的卻會吃到上面的!?
     //判定瀏覽器寬度設定格子數量
     setShow() {
         var widowWidth = $(window).width();
@@ -212,22 +184,8 @@ class Module {
                 left: "+=" + srcollWidth + "",
             }, srcollSpeed);
         console.log(slider);
-        // $(".content_box2").animate({
-        //     left: "+=" + srcollWidth + "",
-        // }, srcollSpeed);
         return this;
     }
-
-    // goLeftScroll() {
-    //     var srcollSpeed = ModuleDefaults.speed * 1000;
-    //     var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-    //     $(".content_box2").animate({
-    //         left: "+=" + srcollWidth + "",
-    //     }, srcollSpeed);
-    //     return this;
-    // }
-
-
 
     ///正在做!!!!!不要斷掉!!!
     ///塞入了$smallBox 就不會互相影響了!!!
@@ -254,14 +212,6 @@ class Module {
         return this;
     }
 
-    // goRightScroll() {
-    //     var srcollSpeed = ModuleDefaults.speed * 1000;
-    //     var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-    //     $(".content_box2").animate({
-    //         left: "-=" + srcollWidth + "",
-    //     }, srcollSpeed);
-    //     return this;
-    // }
     selectDot() {
         $(".content_box2:not(.boxHead)").on('click', function() {
             $(".dotCircle").removeClass("dotSelect");
