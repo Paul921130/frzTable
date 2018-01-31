@@ -339,9 +339,10 @@ var Module = function () {
         value: function selectBox() {
             var self = this;
             var $this = this.$ele;
+            var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
             var $smallBox = $this.find(".content_box2");
             var $BoxSelect = $this.find(".select");
-            $smallBox.on('click', function () {
+            $smallBoxN.on('click', function () {
                 $smallBox.removeClass('select').removeClass('hight_light');
                 $(this).addClass('select').siblings().addClass('hight_light');
                 var selectIndex = $this.find(".select").index() + 1; //:nth-child()的索引值從1開始
@@ -350,19 +351,31 @@ var Module = function () {
                 $(this).removeClass('hight_light');
             });
             return this;
-        } //為什麼上面的完全沒問題 可是下面的卻會吃到上面的!?
+        } //為什麼上面的完全沒問題 可是下面的卻會吃到上面的!?解決
 
 
-        //判定瀏覽器寬度設定格子數量
+        //判定瀏覽器寬度設定格子數量//要抓到ele的dom數量//寫死了....好爛...
 
     }, {
         key: 'setShow',
         value: function setShow() {
+            var self = this;
+            var $this = this.$ele;
+            var $smallBox = $this.find(".content_box2");
+            var $mainBox = $this.find(".main_box");
+            var $smallBoxNumber = $smallBox.length / 8; //抓到了有幾排!!!分別上7下5!
+            console.log($smallBoxNumber);
+            console.log(this.$ele.hasClass('default'));
             var widowWidth = $(window).width();
             if (widowWidth >= 968) {
-                var BoxShow = $(".main_box").width() / 7 - 2; //左右各1px的border!!!!
-                var widowWidth = $(window).width();
-                $(".content_box2").width(BoxShow);
+                // var BoxShow = ($(".main_box").width() / 7) - 2; //左右各1px的border!!!!
+                // var BoxShow = ($mainBox.width() / $smallBoxNumber) - 2;
+                var BoxShow = $(".main_box").width() / 7 - 2;
+                var BoxShow2 = $(".main_box").width() / 5 - 2;
+                console.log(BoxShow2);
+                // $smallBox.width(BoxShow);
+                $(".content_box2_defaule").width(BoxShow);
+                $(".content_box2_rel").width(BoxShow2);
             } else {
                 Module.prototype.changeShow();
                 return this;
