@@ -212,15 +212,14 @@ var Module = function () {
         this.ele = ele;
         this.$ele = $(ele);
         this.option = options;
-        this.smallBox = $('.content_box2');
-        this.smallWidth = $('.content_box2').width();
-        this.slide_right = $('.slide_right_d');
-        this.slide_left = $('.slide_left_d');
     }
 
     _createClass(Module, [{
         key: 'init',
         value: function init() {
+            var self = this;
+            var $this = this.$ele;
+            var opts = this.option;
             console.log('媽的跑兩次!');
             var slider = ModuleDefaults.count.show;
 
@@ -229,13 +228,14 @@ var Module = function () {
             var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
 
             var srcollSpeed = ModuleDefaults.speed * 1000;
+
             // console.log(show-moveStep);
             $('.content_box2').attr("style", 'left: 0px;');
 
             // console.log(this.smallWidth);
             //正在處理中!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             // slide為1的時候會有問題
-            this.slide_left.on('click', function () {
+            $('.slide_left_d').on('click', function () {
                 if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
                     slider = slider - moveStep;
                     Module.prototype.goRightScroll();
@@ -254,7 +254,7 @@ var Module = function () {
                     return this;
                 }
             });
-            this.slide_left.on('click', function () {
+            $('.slide_left_d').on('click', function () {
                 if (moveStep === 1 && slider - Defaultshow > 0) {
                     slider = slider - moveStep;
                     Module.prototype.goRightScroll();
@@ -264,10 +264,9 @@ var Module = function () {
             });
 
             //處理完成95%!!!!!!!!!!!!!!
-            this.slide_right.on('click', function () {
+            $('.slide_right_d').on('click', function () {
                 if (slider + moveStep <= 7) {
                     slider = slider + moveStep;
-
                     Module.prototype.goLeftScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
                     $(".dotCircle").removeClass("dotSelect"); //點點測試中
                     $(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
