@@ -410,38 +410,38 @@ var Module = function () {
     }, {
         key: 'goRightScroll',
         value: function goRightScroll() {
-            var $this = this.$ele;
-            var opts = this.option;
-            var srcollSpeed = ModuleDefaults.speed * 1000;
-            var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-            $content_box2.animate({
-                left: "+=" + srcollWidth + ""
-            }, srcollSpeed);
-            return this;
+            // var $this = this.$ele;
+            // var opts = this.option; 
             // var srcollSpeed = ModuleDefaults.speed * 1000;
             // var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-            // $(".content_box2").animate({
+            // $this.find('.content_box2').animate({
             //     left: "+=" + srcollWidth + "",
             // }, srcollSpeed);
             // return this;
+            var srcollSpeed = ModuleDefaults.speed * 1000;
+            var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
+            $(".content_box2").animate({
+                left: "+=" + srcollWidth + ""
+            }, srcollSpeed);
+            return this;
         }
     }, {
         key: 'goLeftScroll',
         value: function goLeftScroll() {
-            var $this = this.$ele;
-            var opts = this.option;
-            var srcollSpeed = ModuleDefaults.speed * 1000;
-            var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-            $content_box2.animate({
-                left: "-=" + srcollWidth + ""
-            }, srcollSpeed);
-            return this;
+            // var $this = this.$ele;
+            // var opts = this.option;
             // var srcollSpeed = ModuleDefaults.speed * 1000;
             // var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-            // $(".content_box2").animate({
+            // $content_box2.animate({
             //     left: "-=" + srcollWidth + "",
             // }, srcollSpeed);
             // return this;
+            var srcollSpeed = ModuleDefaults.speed * 1000;
+            var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
+            $(".content_box2").animate({
+                left: "-=" + srcollWidth + ""
+            }, srcollSpeed);
+            return this;
         }
     }, {
         key: 'selectDot',

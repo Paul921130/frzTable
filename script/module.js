@@ -202,36 +202,36 @@ class Module {
         return this;
     }
     goRightScroll() {
-        var $this = this.$ele;
-        var opts = this.option; 
-        var srcollSpeed = ModuleDefaults.speed * 1000;
-        var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-        $content_box2.animate({
-            left: "+=" + srcollWidth + "",
-        }, srcollSpeed);
-        return this;
+        // var $this = this.$ele;
+        // var opts = this.option; 
         // var srcollSpeed = ModuleDefaults.speed * 1000;
         // var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-        // $(".content_box2").animate({
+        // $this.find('.content_box2').animate({
         //     left: "+=" + srcollWidth + "",
         // }, srcollSpeed);
         // return this;
-    }
-    goLeftScroll() {
-        var $this = this.$ele;
-        var opts = this.option;
         var srcollSpeed = ModuleDefaults.speed * 1000;
         var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-        $content_box2.animate({
-            left: "-=" + srcollWidth + "",
+        $(".content_box2").animate({
+            left: "+=" + srcollWidth + "",
         }, srcollSpeed);
         return this;
+    }
+    goLeftScroll() {
+        // var $this = this.$ele;
+        // var opts = this.option;
         // var srcollSpeed = ModuleDefaults.speed * 1000;
         // var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-        // $(".content_box2").animate({
+        // $content_box2.animate({
         //     left: "-=" + srcollWidth + "",
         // }, srcollSpeed);
         // return this;
+        var srcollSpeed = ModuleDefaults.speed * 1000;
+        var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
+        $(".content_box2").animate({
+            left: "-=" + srcollWidth + "",
+        }, srcollSpeed);
+        return this;
     }
     selectDot(){
     	$(".content_box2:not(.boxHead)").on('click', function() {
