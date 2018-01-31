@@ -207,21 +207,13 @@ class Module {
     ///塞入了$smallBox 就不會互相影響了!!!
     goRightScroll() {
         var self = this;
-
         var $this = this.$ele;
-
         var $smallBox = $this.find(".content_box2");
-
         var slider = ModuleDefaults.count.show;
-
         var moveStep = ModuleDefaults.count.slide;
-
         var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
-
         var srcollSpeed = ModuleDefaults.speed * 1000;
-
         var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-        
         $smallBox.animate({
                 left: "-=" + srcollWidth + "",
         }, srcollSpeed); //這裡是剛好滾完的狀態,如slide:2 show:3       
