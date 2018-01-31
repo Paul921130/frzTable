@@ -218,7 +218,6 @@ var Module = function () {
     _createClass(Module, [{
         key: 'init',
         value: function init() {
-
             var self = this;
             var $this = this.$ele;
             var opts = this.option;
@@ -226,7 +225,6 @@ var Module = function () {
             var $slide_right = $this.find(".slide_right");
             var $smallBox = $this.find(".content_box2");
             var $body = $this.children('.frzTable');
-
             console.log('跑了兩次!');
             console.log($this); //出來兩個一個是default 一個是rel
             console.log($smallBox);
@@ -241,12 +239,10 @@ var Module = function () {
             //模組化on click
             $slide_left.on('click', function () {
                 console.log($this);
-
                 self.goLeftScroll();
             });
             $slide_right.on('click', function () {
                 console.log($this);
-                self.goRightSlider();
                 self.goRightScroll();
             });
             //模組化on click
@@ -324,8 +320,6 @@ var Module = function () {
             this.selectBox(); //表格選擇function
             this.selectDot();
             // this.changeShow();
-
-            console.log(this.goLeftSlider());
             return this;
         }
     }, {
@@ -340,40 +334,36 @@ var Module = function () {
         }
 
         ///////////////////////
+        // goRightSlider () {
+        //     var self = this;
+        //     var $this = this.$ele;
+        //     var $slide_left = $this.find(".slide_left");
+        //     var $slide_right = $this.find(".slide_right");
+        //     var moveStep= ModuleDefaults.count.slide;
+        //     $slide_right.on('click', function() { 
+        //         this.slider += moveStep;
+        //         if ( this.slider > 7 ) {
+        //             this.slider = 7;
+        //         }
+        //     });
+        //     console.log(this.slider);
+        //     return this.slider;
+        // }
 
-    }, {
-        key: 'goRightSlider',
-        value: function goRightSlider() {
-            var self = this;
-            var $this = this.$ele;
-            var $slide_left = $this.find(".slide_left");
-            var $slide_right = $this.find(".slide_right");
-            var moveStep = ModuleDefaults.count.slide;
-            $slide_right.on('click', function () {
-                this.slider += moveStep;
-                if (this.slider > 7) {
-                    this.slider = 7;
-                }
-            });
-            console.log(this.slider);
-            return this.slider;
-        }
-    }, {
-        key: 'goLeftSlider',
-        value: function goLeftSlider() {
-            var self = this;
-            var $this = this.$ele;
-            var $slide_left = $this.find(".slide_left");
-            var $slide_right = $this.find(".slide_right");
-            var moveStep = ModuleDefaults.count.slide;
-            $slide_left.on('click', function () {
-                this.slider -= moveStep;
-                if (this.slider < 1) {
-                    this.slider = 1;
-                }
-            });
-            return this.slider;
-        }
+        // goLeftSlider () {
+        //     var self = this;
+        //     var $this = this.$ele;
+        //     var $slide_left = $this.find(".slide_left");
+        //     var $slide_right = $this.find(".slide_right");
+        //     var moveStep= ModuleDefaults.count.slide;
+        //    $slide_left.on('click', function() { 
+        //     this.slider -= moveStep;
+        //     if ( this.slider < 1 ) {
+        //         this.slider = 1;
+        //     }
+        // });
+        //     return this.slider;
+        // }
         /////////////////////goRightSlider ()是數字!!
 
     }, {
@@ -419,47 +409,16 @@ var Module = function () {
         key: 'goLeftScroll',
         value: function goLeftScroll() {
             var self = this;
-
             var $this = this.$ele;
-
             var $smallBox = $this.find(".content_box2");
-
             var slider = ModuleDefaults.count.show;
-
             var moveStep = ModuleDefaults.count.slide;
-
             var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
-
-
             var srcollSpeed = ModuleDefaults.speed * 1000;
             var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-            if (moveStep === 1 && slider - Defaultshow > 0) {
-                slider = slider - moveStep;
-                $smallBox.animate({
-                    left: "+=" + srcollWidth + ""
-                }, srcollSpeed);
-                $(".dotCircle").removeClass("dotSelect"); //點點測試中
-                $(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
-            } else if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
-                slider = slider - moveStep;
-                $smallBox.animate({
-                    left: "+=" + srcollWidth + ""
-                }, srcollSpeed);
-                $(".dotCircle").removeClass("dotSelect"); //點點測試中
-                $(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
-                return this;
-            } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
-                console.log('嘿!我在這!!!!!');
-                var srcollSpeed = ModuleDefaults.speed * 1000;
-                var srcollWidth = ($smallBox.width() + 2) * (slider - Defaultshow); //1px的border的一半
-                $smallBox.animate({
-                    left: "+=" + srcollWidth + ""
-                }, srcollSpeed);
-                slider = Defaultshow;
-                $(".dotCircle").removeClass("dotSelect"); //點點測試中
-                $(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
-                return this;
-            }
+            $smallBox.animate({
+                left: "+=" + srcollWidth + ""
+            }, srcollSpeed);
             console.log(slider);
             // $(".content_box2").animate({
             //     left: "+=" + srcollWidth + "",
@@ -482,7 +441,7 @@ var Module = function () {
 
     }, {
         key: 'goRightScroll',
-        value: function goRightScroll(slider, moveStep, Defaultshow) {
+        value: function goRightScroll() {
             var self = this;
 
             var $this = this.$ele;
@@ -498,25 +457,10 @@ var Module = function () {
             var srcollSpeed = ModuleDefaults.speed * 1000;
 
             var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-            if (slider + moveStep <= 7) {
-                slider = slider + moveStep;
-                $smallBox.animate({
-                    left: "-=" + srcollWidth + ""
-                }, srcollSpeed); //這裡是剛好滾完的狀態,如slide:2 show:3
-                $(".dotCircle").removeClass("dotSelect"); //點點測試中
-                $(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
-            } else if (7 - slider > 0) {
-                console.log('天啊!!!!今天好冷!');
-                var srcollWidth = ($smallBox.width() + 2) * (7 - slider); //1px的border的一半
-                $smallBox.animate({
-                    left: "-=" + srcollWidth + ""
-                }, srcollSpeed);
 
-                slider = slider + (7 - slider);
-                $(".dotCircle").removeClass("dotSelect"); //點點測試中
-                $(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
-                return this;
-            };
+            $smallBox.animate({
+                left: "-=" + srcollWidth + ""
+            }, srcollSpeed); //這裡是剛好滾完的狀態,如slide:2 show:3       
             return this;
         }
 
