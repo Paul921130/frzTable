@@ -118,16 +118,28 @@ $classname: 'frzTable';
 		padding: 14px 5px;
 		background: rgba(0,0,0,.3 );	
 	}
-	.slide_right{
+	.slide_right_d{
 		position: absolute;
 		right: 0;
 		top:50%;
 		margin-top: -20px;
 	}
-	.slide_left{
+	.slide_left_d{
 		position: absolute;
 		left: 0;
 		top: 50%;
+		margin-top: -20px;
+	}
+	.slide_left_r{
+		position: absolute;
+		right: 0;
+		top:50%;
+		margin-top: -20px;
+	}
+	.slide_right_r{
+		position: absolute;
+		right: 0;
+		top:50%;
 		margin-top: -20px;
 	}
 	.main_box{

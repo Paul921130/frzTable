@@ -22,10 +22,11 @@ class Module {
         this.option = options;
         this.smallBox = $('.content_box2');
         this.smallWidth = $('.content_box2').width();
-        this.slide_right = $('.slide_right');
-        this.slide_left = $('.slide_left');
+        this.slide_right = $('.slide_right_d');
+        this.slide_left = $('.slide_left_d');
     }
     init() {
+    	console.log('媽的跑兩次!');
         var slider = ModuleDefaults.count.show;
 
         var moveStep = ModuleDefaults.count.slide;
@@ -63,7 +64,7 @@ class Module {
                 slider = slider - moveStep;
                 Module.prototype.goRightScroll();
                 $(".dotCircle").removeClass("dotSelect");//點點測試中
-                $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
+                $(".dotCircle:nth-child(" + ( slider - 2 ) + ")").addClass("dotSelect");
             }
         });
 
@@ -126,7 +127,6 @@ class Module {
         });
         return this;
     }
-
     //判定瀏覽器寬度設定格子數量
     setShow() {
         var widowWidth = $(window).width();
