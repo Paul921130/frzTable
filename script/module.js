@@ -25,32 +25,43 @@ class Module {
         var self = this;
         var $this = this.$ele;
         var opts = this.option;
-    	console.log('媽的跑兩次!');
-        var slider = ModuleDefaults.count.show;
+        var $slide_left = $this.find(".slide_left");
+        var $slide_right = $this.find(".slide_right");
+        var $smallBox = $this.find(".content_box2");
+        console.log('跑了兩次!');
 
+        console.log($this);//出來兩個一個是default 一個是rel
+
+        console.log($smallBox.width());
+
+        var slider = ModuleDefaults.count.show;
+        
         var moveStep = ModuleDefaults.count.slide;
 
         var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
 
-        var srcollSpeed = ModuleDefaults.speed * 1000;
-        
-        // console.log(show-moveStep);
+
         $('.content_box2').attr("style", 'left: 0px;');
 
         // console.log(this.smallWidth);
         //正在處理中!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        //模組化on click
+        $slide_left.on('click',function(){};
+        $slide_right.on('click',function(){};
         // slide為1的時候會有問題
-        $('.slide_left_d').on('click', function() {
+        $slide_left.on('click', function() {
+            var srcollSpeed = ModuleDefaults.speed * 1000;
             if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
                 slider = slider - moveStep;
                 Module.prototype.goRightScroll();
                 $(".dotCircle").removeClass("dotSelect");//點點測試中
                 $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
+                return this;
             } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
                 console.log('嘿!我在這!!!!!')
                 var srcollSpeed = ModuleDefaults.speed * 1000;
-                var srcollWidth = ($('.content_box2').width() + 2) * (slider - Defaultshow); //1px的border的一半
-                $(".content_box2").animate({
+                var srcollWidth = ($smallBox.width() + 2) * (slider - Defaultshow); //1px的border的一半
+                $smallBox.animate({
                     left: "+=" + srcollWidth + "",
                 }, srcollSpeed);
                 slider = Defaultshow;
@@ -59,7 +70,7 @@ class Module {
                 return this;
             }
         });
-        $('.slide_left_d').on('click', function() {
+        $slide_left.on('click', function() {
             if (moveStep === 1 && slider - Defaultshow > 0) {
                 slider = slider - moveStep;
                 Module.prototype.goRightScroll();
@@ -69,7 +80,7 @@ class Module {
         });
 
         //處理完成95%!!!!!!!!!!!!!!
-        $('.slide_right_d').on('click', function() {
+        $slide_right.on('click', function() {
             if (slider + moveStep <= 7) {
                 slider = slider + moveStep;
                 Module.prototype.goLeftScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
@@ -77,8 +88,8 @@ class Module {
                 $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
             } else if (7 - slider > 0) {
                 console.log('天啊!!!!今天好冷!');
-                var srcollWidth = ($('.content_box2').width() + 2) * (7 - slider) ; //1px的border的一半
-                $(".content_box2").animate({
+                var srcollWidth = ($smallBox.width() + 2) * (7 - slider) ; //1px的border的一半
+                $smallBox.animate({
                     left: "-=" + srcollWidth + "",
                 }, srcollSpeed);
 
@@ -94,13 +105,13 @@ class Module {
         	// location.reload();//改變window尺寸時,重整畫面!
             var widowWidth = $(window).width();
             console.log(widowWidth);
-            $(".content_box2").width(BoxShow);
+            $smallBox.width(BoxShow);
             if (widowWidth <= 968) {
                 Module.prototype.changeShow();
                 return this;
             } else {
                 var BoxShow = ($(".main_box").width()) / 7 - 2;
-                $(".content_box2").width(BoxShow);
+                $smallBox.width(BoxShow);
                 return this;
             }
         }); //判定瀏覽器寬度設定格子數
