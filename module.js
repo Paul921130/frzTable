@@ -192,7 +192,7 @@ var ModuleName = 'frzTable';
 var ModuleDefaults = {
     count: {
         // M版時每次點擊往前往後移動幾格儲存格
-        slide: 1, // [number] 
+        slide: 2, // [number] 
         // M版時一個畫面show幾格儲存格
         show: 3 // [number] 
     },
@@ -405,15 +405,35 @@ var Module = function () {
     }, {
         key: 'setShow',
         value: function setShow() {
+            var self = this;
+            var $this = this.$ele;
+            var $smallBox = $this.find(".content_box2");
+            var $mainBox = $this.find(".main_box");
+            var $smallBoxNumber = $smallBox.length / 8; //抓到了有幾排!!!分別上7下5!
+            console.log($smallBoxNumber);
+            console.log(this.$ele.hasClass('default'));
             var widowWidth = $(window).width();
             if (widowWidth >= 968) {
-                var BoxShow = $(".main_box").width() / 7 - 2; //左右各1px的border!!!!
-                var widowWidth = $(window).width();
-                $(".content_box2").width(BoxShow);
+                // var BoxShow = ($(".main_box").width() / 7) - 2; //左右各1px的border!!!!
+                // var BoxShow = ($mainBox.width() / $smallBoxNumber) - 2;
+                var BoxShow = $(".main_box").width() / 7 - 2;
+                var BoxShow2 = $(".main_box").width() / 5 - 2;
+                // $smallBox.width(BoxShow);
+                $(".content_box2_defaule").width(BoxShow);
+                $(".content_box2_rel").width(BoxShow2);
             } else {
                 Module.prototype.changeShow();
                 return this;
             }
+            // var widowWidth = $(window).width();
+            // if (widowWidth >= 968) {
+            //     var BoxShow = ($(".main_box").width() / 7) - 2; //左右各1px的border!!!!
+            //     var widowWidth = $(window).width();
+            //     $(".content_box2").width(BoxShow);
+            // } else {
+            //     Module.prototype.changeShow();
+            //     return this;
+            // }
         }
     }, {
         key: 'changeShow',
