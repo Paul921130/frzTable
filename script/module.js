@@ -111,20 +111,22 @@ class Module {
         this.setShow();
         //判定瀏覽器寬度設定格子數量 
         $(window).resize(function() {
-            // location.reload();//改變window尺寸時,重整畫面!
+            //改變window尺寸時,重整畫面!
             var widowWidth = $(window).width();
-            // console.log(widowWidth);
             $smallBox.width(BoxShow);
             if (widowWidth <= 968) {
                 Module.prototype.changeShow();
                 return this;
             } else {
                 var BoxShow = ($(".main_box").width()) / 7 - 2;
-                $smallBox.width(BoxShow);
+                var BoxShow2 = ($(".main_box").width()) / 5 - 2;
+                $(".content_box2_defaule").width(BoxShow);
+                $(".content_box2_rel").width(BoxShow2);
                 return this;
             }
         }); //判定瀏覽器寬度設定格子數
-        this.selectBox(); //表格選擇function
+        
+        this.selectBox(); //選擇表格function
         this.selectDot();
         // this.changeShow();
         return this;
@@ -169,7 +171,6 @@ class Module {
             // var BoxShow = ($mainBox.width() / $smallBoxNumber) - 2;
             var BoxShow = ($(".main_box").width() / 7) - 2;
             var BoxShow2 = ($(".main_box").width() / 5) - 2;
-            console.log(BoxShow2);
             // $smallBox.width(BoxShow);
             $(".content_box2_defaule").width(BoxShow);
             $(".content_box2_rel").width(BoxShow2);
@@ -221,11 +222,24 @@ class Module {
     }
 
     selectDot() {
-        $(".content_box2:not(.boxHead)").on('click', function() {
-            $(".dotCircle").removeClass("dotSelect");
-            var selectIndex = $('.select').index() + 1;
-            $(".dotCircle:nth-child(" + selectIndex + ")").addClass("dotSelect");
+        var self = this;
+        var $this = this.$ele;
+        var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
+        var $smallBox = $this.find(".content_box2");
+        var $thisDot= $this.find(".dotCircle");
+
+        $smallBoxN.on('click', function() {
+            $thisDot.removeClass("dotSelect");
+            // $(".dotCircle").removeClass("dotSelect");
+            var selectIndex = $this.find(".select").index() + 1;
+            $this.find(".dotCircle:nth-child(" + selectIndex + ")").addClass("dotSelect");
         });
+
+        // $(".content_box2:not(.boxHead)").on('click', function() {
+        //     $(".dotCircle").removeClass("dotSelect");
+        //     var selectIndex = $('.select').index() + 1;
+        //     $(".dotCircle:nth-child(" + selectIndex + ")").addClass("dotSelect");
+        // });
         return this;
     }
 };
