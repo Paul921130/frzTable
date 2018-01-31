@@ -30,7 +30,6 @@ class Module {
         var $slide_right = $this.find(".slide_right");
         var $smallBox = $this.find(".content_box2");
         var $body = $this.children('.frzTable');
-
         console.log('跑了兩次!');
         console.log($this); //出來兩個一個是default 一個是rel
         console.log($smallBox);
@@ -220,7 +219,6 @@ class Module {
         }, srcollSpeed); //這裡是剛好滾完的狀態,如slide:2 show:3       
         return this;
     }
-
     selectDot() {
         var self = this;
         var $this = this.$ele;

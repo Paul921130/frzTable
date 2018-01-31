@@ -225,7 +225,6 @@ var Module = function () {
             var $slide_right = $this.find(".slide_right");
             var $smallBox = $this.find(".content_box2");
             var $body = $this.children('.frzTable');
-
             console.log('跑了兩次!');
             console.log($this); //出來兩個一個是default 一個是rel
             console.log($smallBox);
