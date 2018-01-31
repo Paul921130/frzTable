@@ -340,17 +340,19 @@ var Module = function () {
             var self = this;
             var $this = this.$ele;
             var $smallBox = $this.find(".content_box2");
+            var $BoxSelect = $this.find(".select");
             $smallBox.on('click', function () {
-                $('.content_box2').removeClass('select').removeClass('hight_light');
+                $smallBox.removeClass('select').removeClass('hight_light');
                 $(this).addClass('select').siblings().addClass('hight_light');
-                var selectIndex = $('.select').index() + 1; //:nth-child()的索引值從1開始
+                var selectIndex = $this.find(".select").index() + 1; //:nth-child()的索引值從1開始
                 $this.find(".content_box2:nth-child(" + selectIndex + ")").removeClass("hight_light").addClass("hight_light");
-                // $(".content_box2:nth-child(" + selectIndex + ")").addClass("hight_light");
                 $(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
                 $(this).removeClass('hight_light');
             });
             return this;
         } //為什麼上面的完全沒問題 可是下面的卻會吃到上面的!?
+
+
         //判定瀏覽器寬度設定格子數量
 
     }, {
