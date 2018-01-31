@@ -49,7 +49,8 @@ class Module {
         $slider_left.on('click', function() {
             if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
                 slider = slider - moveStep;
-                Module.prototype.goRightScroll();
+                self.goRightScroll();
+                // Module.prototype.goRightScroll();
                 $(".dotCircle").removeClass("dotSelect");//點點測試中
                 $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
             } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
@@ -68,7 +69,8 @@ class Module {
         $slider_left.on('click', function() {
             if (moveStep === 1 && slider - Defaultshow > 0) {
                 slider = slider - moveStep;
-                Module.prototype.goRightScroll();
+                self.goRightScroll();
+                // Module.prototype.goRightScroll();
                 $(".dotCircle").removeClass("dotSelect");//點點測試中
                 $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
             }
@@ -78,8 +80,8 @@ class Module {
         $slide_right.on('click', function() {
             if (slider + moveStep <= 7) {
                 slider = slider + moveStep;
-
-                Module.prototype.goLeftScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
+                self.goLeftScroll();
+                // Module.prototype.goLeftScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
                 $(".dotCircle").removeClass("dotSelect");//點點測試中
                 $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
             } else if (7 - slider > 0) {
@@ -202,6 +204,10 @@ class Module {
         return this;
     }
     goRightScroll() {
+        var self = this;
+        var $this = this.$ele;
+        var opts = this.option;
+        var $content_box2 = $this.find('.content_box2');
         // var $this = this.$ele;
         // var opts = this.option; 
         // var srcollSpeed = ModuleDefaults.speed * 1000;
@@ -212,12 +218,16 @@ class Module {
         // return this;
         var srcollSpeed = ModuleDefaults.speed * 1000;
         var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-        $(".content_box2").animate({
+        $content_box2.animate({
             left: "+=" + srcollWidth + "",
         }, srcollSpeed);
         return this;
     }
     goLeftScroll() {
+        var self = this;
+        var $this = this.$ele;
+        var opts = this.option;
+        var $content_box2 = $this.find('.content_box2');
         // var $this = this.$ele;
         // var opts = this.option;
         // var srcollSpeed = ModuleDefaults.speed * 1000;
@@ -228,7 +238,7 @@ class Module {
         // return this;
         var srcollSpeed = ModuleDefaults.speed * 1000;
         var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-        $(".content_box2").animate({
+        $content_box2.animate({
             left: "-=" + srcollWidth + "",
         }, srcollSpeed);
         return this;
