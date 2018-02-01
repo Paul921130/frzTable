@@ -147,7 +147,8 @@ class Module {
         //     };
         // });
         this.setShow();
-        //判定瀏覽器寬度設定格子數量	
+        //判定瀏覽器寬度設定格子數量
+        	
         $(window).resize(function() {
         	// location.reload();//改變window尺寸時,重整畫面!
             var widowWidth = $(window).width();
