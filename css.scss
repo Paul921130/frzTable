@@ -95,22 +95,34 @@ $classname: 'frzTable';
 			font-size: 16px;
 		}
 		.plane1{
+
 			position: absolute;
 			font-weight: bolder;
+			height: 22px;
 			display:block;
 			z-index:99;
-			top:-5px;
+			top:5px;
 			right: 5px;
-			color: #259e7b;
+			color: #ff8e25;
+			.ic-ln{
+				display:none;
+				font-size: 22px;
+			}
 		}
 		.plane{
+			display:none;
+			height: 22px;
 			position: absolute;
 			font-weight: bolder;
 			display:block;
 			z-index:99;
-			top:-20px;
-			right: 5px;
-			color: #259e7b;
+			top:5px;
+			right: 10px;
+			color: #ff8e25;
+			.ic-ln{
+				display:none;
+				font-size: 22px;
+			}
 		}
 	}
 	.mt-10{
@@ -268,6 +280,17 @@ $classname: 'frzTable';
 		}
 		p{
 			color: #ff8e25;
+		}
+		
+		.plane{
+			
+			.ic-ln{
+				display:block;}
+		}
+		.plane1{
+		
+			.ic-ln{
+				display:block;}
 		}
 	}
 	// style on phone device
