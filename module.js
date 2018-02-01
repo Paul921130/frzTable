@@ -225,7 +225,8 @@ var Module = function () {
             var $slide_right = $this.find(".slide_right");
             var $smallBox = $this.find(".content_box2");
             var $content_box2 = $this.find('.content_box2');
-            var $body = $this.children('.frzTable');
+            var $thisDot = $this.find(".dotCircle");
+
             console.log('跑了兩次!');
             console.log($this); //出來兩個一個是default 一個是rel
             console.log($smallBox);
@@ -256,8 +257,14 @@ var Module = function () {
                         left: "+=" + srcollWidth + ""
                     }, srcollSpeed);
                     slider = Defaultshow;
-                    $(".dotCircle").removeClass("dotSelect"); //點點測試中
-                    $(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                    //點點
+                    // $(".dotCircle").removeClass("dotSelect");
+                    // $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
+                    //點點測試中
+                    //點點
+                    $thisDot.removeClass("dotSelect");
+                    $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                    //點點測試中
                     return this;
                 }
             });
@@ -265,8 +272,8 @@ var Module = function () {
                 if (moveStep === 1 && slider - Defaultshow > 0) {
                     slider = slider - moveStep;
                     self.goLeftScroll();
-                    $(".dotCircle").removeClass("dotSelect"); //點點測試中
-                    $(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                    $thisDot.removeClass("dotSelect");
+                    $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
                 }
             });
 
@@ -275,8 +282,10 @@ var Module = function () {
                 if (slider + moveStep <= 7) {
                     slider = slider + moveStep;
                     self.goRightScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
-                    $(".dotCircle").removeClass("dotSelect"); //點點測試中
-                    $(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                    //點點
+                    $thisDot.removeClass("dotSelect");
+                    $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                    //點點測試中
                 } else if (7 - slider > 0) {
                     console.log('天啊!!!!今天好冷!');
                     var srcollWidth = ($('.content_box2').width() + 2) * (7 - slider); //1px的border的一半
@@ -285,8 +294,12 @@ var Module = function () {
                     }, srcollSpeed);
 
                     slider = slider + (7 - slider);
-                    $(".dotCircle").removeClass("dotSelect"); //點點測試中
-                    $(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                    // $(".dotCircle").removeClass("dotSelect");//點點測試中
+                    // $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
+                    //點點
+                    $thisDot.removeClass("dotSelect");
+                    $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                    //點點測試中
                     return this;
                 };
             });
@@ -458,12 +471,6 @@ var Module = function () {
                 var selectIndex = $this.find(".select").index() + 1;
                 $this.find(".dotCircle:nth-child(" + selectIndex + ")").addClass("dotSelect");
             });
-
-            // $(".content_box2:not(.boxHead)").on('click', function() {
-            //     $(".dotCircle").removeClass("dotSelect");
-            //     var selectIndex = $('.select').index() + 1;
-            //     $(".dotCircle:nth-child(" + selectIndex + ")").addClass("dotSelect");
-            // });
             return this;
         }
     }]);
