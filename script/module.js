@@ -27,10 +27,6 @@ class Module {
         var $this = this.$ele;
         var opts = this.option;
         var $smallBox = $this.find(".content_box2");
-
-        console.log('跑了兩次!');
-        console.log($this); //出來兩個一個是default 一個是rel
-
         $('.content_box2').attr("style", 'left: 0px;');
         
         this.defaultScroll();
@@ -63,22 +59,18 @@ class Module {
                 $(this).addClass('select').siblings().addClass('hight_light');
                 var selectIndex = $this.find(".select").index() + 1;//:nth-child()的索引值從1開始
                 var selectRel = $this.find(".select").parent().index()-1; //contentBox的index~有一行無用所以要減一   
-                console.log(selectRel);
                 $this.find(".content_box2:nth-child(" + selectIndex + ")").removeClass("hight_light").addClass("hight_light");
                 $this.find('.content_box2_rel').removeClass('hight_light');
                 $this.find(".boxHead_rel").removeClass("relSelect");
                 $this.find(".left_rel").removeClass("relSelect");
-                // $('.content_box2_rel').removeClass('hight_light');
-                // $(".boxHead_rel").removeClass("relSelect");
-                // $(".left_rel").removeClass("relSelect");
                 $this.find(".left_rel:nth-child(" + selectRel + ")").addClass("relSelect");
                 $this.find(".boxHead_rel:nth-child(" + selectIndex + ")").addClass("relSelect");
                 $this.find(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
-                // $(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
+
                 $(this).removeClass('hight_light');
         });
         return this;
-    }//為什麼上面的完全沒問題 可是下面的卻會吃到上面的!?解決
+    }
     
     ///defaultScroll 測試中!!!
     defaultScroll(){
@@ -96,7 +88,6 @@ class Module {
         var Defaultshow = opts.count.show; //show的數字不會變
         var srcollSpeed = opts.speed * 1000;
         var $grayBoxNum= $this.find(".fristBox").length;
-        console.log( $grayBoxNum );
         var $smallBoxNum = $smallBox.length / $grayBoxNum;//7或5
 
         $slide_left.on('click', function() {
@@ -106,7 +97,6 @@ class Module {
                 $thisDot.removeClass("dotSelect");
                 $this.find(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
             } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
-                console.log('嘿!我在這!!!!!')
                
                 var srcollWidth = ($('.content_box2').width() + 2) * (slider - Defaultshow); //1px的border的一半
                 $smallBox.animate({
@@ -139,7 +129,6 @@ class Module {
                 $this.find(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
                 //點點測試中
             } else if ($smallBoxNum - slider > 0) {
-                console.log('天啊!!!!今天好冷!');
                 var srcollWidth = ($('.content_box2').width() + 2) * ($smallBoxNum - slider) ; //1px的border的一半
                 $smallBox.animate({
                     left: "-=" + srcollWidth + "",
