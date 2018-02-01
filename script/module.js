@@ -30,7 +30,6 @@ class Module {
 
         console.log('跑了兩次!');
         console.log($this); //出來兩個一個是default 一個是rel
-        console.log($smallBox);
 
         $('.content_box2').attr("style", 'left: 0px;');
         
