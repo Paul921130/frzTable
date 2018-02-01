@@ -29,28 +29,36 @@ class Module {
         var $slide_left = $this.find(".slide_left");
         var $slide_right = $this.find(".slide_right");
         var $smallBox = $this.find(".content_box2");
+        var $content_box2 = $this.find('.content_box2'); 
         var $body = $this.children('.frzTable');
         console.log('跑了兩次!');
         console.log($this); //出來兩個一個是default 一個是rel
         console.log($smallBox);
-        // console.log($smallBox.width());
 
-        // $('.content_box2').attr("style", 'left: 0px;');
+        var slider = ModuleDefaults.count.show;
+        var moveStep = ModuleDefaults.count.slide;
+        var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
+        var srcollSpeed = ModuleDefaults.speed * 1000;
+        
+
+        $('.content_box2').attr("style", 'left: 0px;');
+        // console.log($smallBox.width());
+        
 
         // console.log(this.smallWidth);
         //正在處理中!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // slide為1的時候會有問題
-        this.slide_left.on('click', function() {
+        $slide_left.on('click', function() {
             if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
                 slider = slider - moveStep;
-                Module.prototype.goRightScroll();
+                self.goLeftScroll();
                 $(".dotCircle").removeClass("dotSelect");//點點測試中
                 $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
             } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
                 console.log('嘿!我在這!!!!!')
                 var srcollSpeed = ModuleDefaults.speed * 1000;
                 var srcollWidth = ($('.content_box2').width() + 2) * (slider - Defaultshow); //1px的border的一半
-                $(".content_box2").animate({
+                $smallBox.animate({
                     left: "+=" + srcollWidth + "",
                 }, srcollSpeed);
                 slider = Defaultshow;
@@ -59,27 +67,26 @@ class Module {
                 return this;
             }
         });
-        this.slide_left.on('click', function() {
+        $slide_left.on('click', function() {
             if (moveStep === 1 && slider - Defaultshow > 0) {
                 slider = slider - moveStep;
-                Module.prototype.goRightScroll();
+                self.goLeftScroll();
                 $(".dotCircle").removeClass("dotSelect");//點點測試中
                 $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
             }
         });
 
         //處理完成95%!!!!!!!!!!!!!!
-        this.slide_right.on('click', function() {
+        $slide_right.on('click', function() {
             if (slider + moveStep <= 7) {
                 slider = slider + moveStep;
-
-                Module.prototype.goLeftScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
+                self.goRightScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
                 $(".dotCircle").removeClass("dotSelect");//點點測試中
                 $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
             } else if (7 - slider > 0) {
                 console.log('天啊!!!!今天好冷!');
                 var srcollWidth = ($('.content_box2').width() + 2) * (7 - slider) ; //1px的border的一半
-                $(".content_box2").animate({
+                $smallBox.animate({
                     left: "-=" + srcollWidth + "",
                 }, srcollSpeed);
 
@@ -193,13 +200,13 @@ class Module {
     goLeftScroll() {
         var self = this;
         var $this = this.$ele;
-        var $smallBox = $this.find(".content_box2");
+        var $smallBox = $this.find('.content_box2');
         var slider = ModuleDefaults.count.show;
         var moveStep = ModuleDefaults.count.slide;
         var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
         var srcollSpeed = ModuleDefaults.speed * 1000;
         var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-        $smallBox.animate({
+         $smallBox.animate({
                 left: "+=" + srcollWidth + "",
             }, srcollSpeed);
         console.log(slider);
@@ -211,13 +218,14 @@ class Module {
     goRightScroll() {
         var self = this;
         var $this = this.$ele;
-        var $smallBox = $this.find(".content_box2");
+          var opts = this.option; 
+        var $smallBox = $this.find('.content_box2');
         var slider = ModuleDefaults.count.show;
         var moveStep = ModuleDefaults.count.slide;
         var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
         var srcollSpeed = ModuleDefaults.speed * 1000;
         var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
-        $smallBox.animate({
+         $smallBox.animate({
                 left: "-=" + srcollWidth + "",
         }, srcollSpeed); //這裡是剛好滾完的狀態,如slide:2 show:3       
         return this;
@@ -225,6 +233,7 @@ class Module {
     selectDot() {
         var self = this;
         var $this = this.$ele;
+          var opts = this.option; 
         var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
         var $smallBox = $this.find(".content_box2");
         var $thisDot= $this.find(".dotCircle");
