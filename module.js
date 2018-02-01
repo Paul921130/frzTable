@@ -200,7 +200,7 @@ var ModuleDefaults = {
     speed: .3, // [number] 
     // 每次點擊儲存格時會執行此callback，並帶入所點擊的儲存格jquery物件
     whenClick: function whenClick($element) {
-        // console.log($element)
+        console.log($element);
     }
 };
 var ModuleReturns = ['output', 'methods'];
@@ -238,6 +238,7 @@ var Module = function () {
             this.changeShow();
             this.resizeShow();
             this.setShow();
+            this.whenClick();
             return this;
         }
     }, {
@@ -294,10 +295,10 @@ var Module = function () {
             var $grayBox = $this.find(".grayBox");
             var $thisDot = $this.find(".dotCircle");
 
-            var slider = ModuleDefaults.count.show;
-            var moveStep = ModuleDefaults.count.slide;
-            var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
-            var srcollSpeed = ModuleDefaults.speed * 1000;
+            var slider = opts.count.show;
+            var moveStep = opts.count.slide;
+            var Defaultshow = opts.count.show; //show的數字不會變
+            var srcollSpeed = opts.speed * 1000;
             var $grayBoxNum = $this.find(".fristBox").length;
             console.log($grayBoxNum);
             var $smallBoxNum = $smallBox.length / $grayBoxNum; //7或5
@@ -310,13 +311,12 @@ var Module = function () {
                     $(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
                 } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
                     console.log('嘿!我在這!!!!!');
-                    var srcollSpeed = ModuleDefaults.speed * 1000;
+
                     var srcollWidth = ($('.content_box2').width() + 2) * (slider - Defaultshow); //1px的border的一半
                     $smallBox.animate({
                         left: "+=" + srcollWidth + ""
                     }, srcollSpeed);
                     slider = Defaultshow;
-
                     //點點
                     $thisDot.removeClass("dotSelect");
                     $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
@@ -468,6 +468,22 @@ var Module = function () {
                 // $(".dotCircle").removeClass("dotSelect");
                 var selectIndex = $this.find(".select").index() + 1;
                 $this.find(".dotCircle:nth-child(" + selectIndex + ")").addClass("dotSelect");
+            });
+            return this;
+        }
+    }, {
+        key: 'whenClick',
+        value: function whenClick() {
+            var self = this;
+            var $this = this.$ele;
+            var opts = this.option;
+            var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
+            var $element = $smallBoxN;
+            var $smallBox = $this.find(".content_box2");
+            var whenClickCallBack = this.option.whenClick;
+
+            $smallBoxN.click(function ($element) {
+                whenClickCallBack($element);
             });
             return this;
         }
