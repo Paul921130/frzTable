@@ -400,15 +400,15 @@ var Module = function () {
                 $(".content_box2_defaule").width(BoxShow);
                 $(".content_box2_rel").width(BoxShow2);
             } else {
-                Module.prototype.changeShow();
+                self.changeShow();
                 return this;
             }
         }
     }, {
         key: 'changeShow',
         value: function changeShow() {
-            var borderSpace = ModuleDefaults.count.show * 2;
-            var BoxShow = ($(".main_box").width() - borderSpace) / ModuleDefaults.count.show;
+            var borderSpace = this.option.count.show * 2;
+            var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
             $(".content_box2").width(BoxShow);
             // $(".content_box2").width(BoxShow);
             return this;
@@ -422,11 +422,11 @@ var Module = function () {
             var self = this;
             var $this = this.$ele;
             var $smallBox = $this.find('.content_box2');
-            var slider = ModuleDefaults.count.show;
-            var moveStep = ModuleDefaults.count.slide;
-            var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
-            var srcollSpeed = ModuleDefaults.speed * 1000;
-            var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
+            var slider = this.option.count.show;
+            var moveStep = this.option.count.slide;
+            var Defaultshow = this.option.count.show; //show的數字不會變
+            var srcollSpeed = this.option.speed * 1000;
+            var srcollWidth = ($('.content_box2').width() + 2) * this.option.count.slide;
             $smallBox.animate({
                 left: "+=" + srcollWidth + ""
             }, srcollSpeed);
@@ -443,11 +443,11 @@ var Module = function () {
             var $this = this.$ele;
             var opts = this.option;
             var $smallBox = $this.find('.content_box2');
-            var slider = ModuleDefaults.count.show;
-            var moveStep = ModuleDefaults.count.slide;
-            var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
-            var srcollSpeed = ModuleDefaults.speed * 1000;
-            var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
+            var slider = this.option.count.show;
+            var moveStep = this.option.count.slide;
+            var Defaultshow = this.option.count.show; //show的數字不會變
+            var srcollSpeed = this.option.speed * 1000;
+            var srcollWidth = ($('.content_box2').width() + 2) * this.option.count.slide;
             $smallBox.animate({
                 left: "-=" + srcollWidth + ""
             }, srcollSpeed); //這裡是剛好滾完的狀態,如slide:2 show:3       
