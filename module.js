@@ -194,7 +194,7 @@ var ModuleDefaults = {
         // M版時每次點擊往前往後移動幾格儲存格
         slide: 2, // [number] 
         // M版時一個畫面show幾格儲存格 友情提示:show最好要大於slide
-        show: 4 // [number] 
+        show: 3 // [number] 
     },
     // 設定花多久時間移動完成
     speed: .3, // [number] 
@@ -262,7 +262,14 @@ var Module = function () {
                 $smallBox.removeClass('select').removeClass('hight_light');
                 $(this).addClass('select').siblings().addClass('hight_light');
                 var selectIndex = $this.find(".select").index() + 1; //:nth-child()的索引值從1開始
+                var selectRel = $this.find(".select").parent().index() - 1; //contentBox的index~有一行無用所以要減一   
+                console.log(selectRel);
                 $this.find(".content_box2:nth-child(" + selectIndex + ")").removeClass("hight_light").addClass("hight_light");
+                $('.content_box2_rel').removeClass('hight_light');
+                $(".boxHead_rel").removeClass("relSelect");
+                $(".left_rel").removeClass("relSelect");
+                $this.find(".left_rel:nth-child(" + selectRel + ")").addClass("relSelect");
+                $this.find(".boxHead_rel:nth-child(" + selectIndex + ")").addClass("relSelect");
                 $(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
                 $(this).removeClass('hight_light');
             });
