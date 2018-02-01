@@ -361,6 +361,7 @@ var Module = function () {
     }, {
         key: 'resizeShow',
         value: function resizeShow() {
+            //桌機版的show 與手機版無關
             // 判定瀏覽器寬度設定格子數量 
             var self = this;
             var $this = this.$ele;
@@ -382,16 +383,15 @@ var Module = function () {
                 }
             });
         }
-        //判定瀏覽器寬度設定格子數量//要抓到ele的dom數量//寫死了....好爛...
-
     }, {
         key: 'setShow',
         value: function setShow() {
+            //判定瀏覽器寬度設定格子數量//要抓到ele的dom數量
             var self = this;
             var $this = this.$ele;
             var $smallBox = $this.find(".content_box2");
             var $mainBox = $this.find(".main_box");
-            var $smallBoxNumber = $smallBox.length / 8; //抓到了有幾排!!!分別上7下5!
+            var $smallBoxNumber = $smallBox.length / 8; //上7下5!
             var widowWidth = $(window).width();
             if (widowWidth >= 968) {
                 //左右各1px的border!!!!
@@ -400,7 +400,7 @@ var Module = function () {
                 $(".content_box2_defaule").width(BoxShow);
                 $(".content_box2_rel").width(BoxShow2);
             } else {
-                Module.prototype.changeShow();
+                Module.self.changeShow();
                 return this;
             }
         }
@@ -410,7 +410,6 @@ var Module = function () {
             var borderSpace = ModuleDefaults.count.show * 2;
             var BoxShow = ($(".main_box").width() - borderSpace) / ModuleDefaults.count.show;
             $(".content_box2").width(BoxShow);
-            // $(".content_box2").width(BoxShow);
             return this;
         }
 

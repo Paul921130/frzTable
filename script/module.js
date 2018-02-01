@@ -194,16 +194,14 @@ class Module {
             $(".content_box2_defaule").width(BoxShow);
             $(".content_box2_rel").width(BoxShow2);
         } else {
-            self.changeShow();
+            Module.self.changeShow();
             return this;
         }
     }
     changeShow() {
         var borderSpace = ModuleDefaults.count.show * 2;
         var BoxShow = ($(".main_box").width() - borderSpace) / ModuleDefaults.count.show;
-        var BoxShow2 = ($(".main_box").width() - borderSpace) / 2;
-        $(".content_box2_defaule").width(BoxShow);
-        $(".content_box2_rel").width(BoxShow2);
+        $(".content_box2").width(BoxShow);
         return this;
     }
 
