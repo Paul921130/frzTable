@@ -77,7 +77,14 @@ $classname: 'frzTable';
 			margin-top:30px;
 			margin-left: 5px;
 			font-size: 12px;
-			line-height: 16px; 
+			line-height: 16px;
+			span{
+				display: block;
+				float: left;
+				text-align: center;
+				font-size: 16px;
+				margin:0 auto; 
+			} 
 		}
 		.airPort{
 			top: 8px;
@@ -86,6 +93,24 @@ $classname: 'frzTable';
 			line-height: 16px;
 			color: #666666;
 			font-size: 16px;
+		}
+		.plane1{
+			position: absolute;
+			font-weight: bolder;
+			display:block;
+			z-index:99;
+			top:-5px;
+			right: 5px;
+			color: #259e7b;
+		}
+		.plane{
+			position: absolute;
+			font-weight: bolder;
+			display:block;
+			z-index:99;
+			top:-20px;
+			right: 5px;
+			color: #259e7b;
 		}
 	}
 	.mt-10{
@@ -236,6 +261,14 @@ $classname: 'frzTable';
 	}
 	.hide{
 		display: none!important;
+	}
+	.relSelect{
+		.airPort{
+			color: #ff8e25;
+		}
+		p{
+			color: #ff8e25;
+		}
 	}
 	// style on phone device
 	@media screen and (min-width: $screen-tablet) {

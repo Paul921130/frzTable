@@ -54,7 +54,7 @@ class Module {
     selectBox() {
         var self = this;
         var $this = this.$ele;
-        var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
+        var $smallBoxN = $this.find(".content_box2:not(.boxHead, .null)");
         var $smallBox = $this.find(".content_box2");
         var $BoxSelect = $this.find(".select");
             $smallBoxN.on('click', function() {
