@@ -59,6 +59,7 @@ $classname: 'frzTable';
 	// }
 	
 	.grayBox{
+		min-width: 70px;
 		position: relative;
 		color: #737373;
 		font-weight: 400;
@@ -67,6 +68,23 @@ $classname: 'frzTable';
 		height: 70px;
 		background: #f1f1f1;
 		border: 1px solid #e2e2e2;
+		
+	}
+	.grayBox_rel{
+		text-align: left;
+		p{
+			margin-top:20px;
+			font-size: 12px;
+			line-height: 20px; 
+		}
+		.airPort{
+			top: 12px;
+			left: 6px;
+			position: absolute;
+			line-height: 20px;
+			color: #666666;
+			font-size: 16px;
+		}
 	}
 	.mt-10{
 		height: 10px;
@@ -102,6 +120,14 @@ $classname: 'frzTable';
 			color: #999999;
 			font-weight: normal;
 		}
+		.airPort{
+			top: 12px;
+			left: 6px;
+			position: absolute;
+			line-height: 20px;
+			color: #666666;
+			font-size: 16px;
+		}
 	}
 	.boxHead{
 		position: relative;
@@ -110,6 +136,9 @@ $classname: 'frzTable';
 		border: 1px solid #e2e2e2;
 		// line-height: 65px;
 		font-weight: normal;
+		p{
+			font-size: 10px;
+		}
 	}
 	
 	.slide_btn{

@@ -360,7 +360,7 @@ var Module = function () {
                 var widowWidth = $(window).width();
                 $smallBox.width(BoxShow);
                 if (widowWidth <= 968) {
-                    Module.prototype.changeShow();
+                    self.changeShow();
                     return this;
                 } else {
                     var BoxShow = $(".main_box").width() / 7 - 2;
@@ -399,6 +399,7 @@ var Module = function () {
             var borderSpace = ModuleDefaults.count.show * 2;
             var BoxShow = ($(".main_box").width() - borderSpace) / ModuleDefaults.count.show;
             $(".content_box2").width(BoxShow);
+            // $(".content_box2").width(BoxShow);
             return this;
         }
 
