@@ -255,15 +255,26 @@ var Module = function () {
         value: function selectBox() {
             var self = this;
             var $this = this.$ele;
-            var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
+            var $smallBoxN = $this.find(".content_box2:not(.boxHead, .null)");
             var $smallBox = $this.find(".content_box2");
             var $BoxSelect = $this.find(".select");
             $smallBoxN.on('click', function () {
                 $smallBox.removeClass('select').removeClass('hight_light');
                 $(this).addClass('select').siblings().addClass('hight_light');
                 var selectIndex = $this.find(".select").index() + 1; //:nth-child()的索引值從1開始
+                var selectRel = $this.find(".select").parent().index() - 1; //contentBox的index~有一行無用所以要減一   
+                console.log(selectRel);
                 $this.find(".content_box2:nth-child(" + selectIndex + ")").removeClass("hight_light").addClass("hight_light");
-                $(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
+                $this.find('.content_box2_rel').removeClass('hight_light');
+                $this.find(".boxHead_rel").removeClass("relSelect");
+                $this.find(".left_rel").removeClass("relSelect");
+                // $('.content_box2_rel').removeClass('hight_light');
+                // $(".boxHead_rel").removeClass("relSelect");
+                // $(".left_rel").removeClass("relSelect");
+                $this.find(".left_rel:nth-child(" + selectRel + ")").addClass("relSelect");
+                $this.find(".boxHead_rel:nth-child(" + selectIndex + ")").addClass("relSelect");
+                $this.find(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
+                // $(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
                 $(this).removeClass('hight_light');
             });
             return this;
@@ -280,14 +291,16 @@ var Module = function () {
             var $slide_left = $this.find(".slide_left");
             var $slide_right = $this.find(".slide_right");
             var $smallBox = $this.find(".content_box2");
+            var $grayBox = $this.find(".grayBox");
             var $thisDot = $this.find(".dotCircle");
 
             var slider = ModuleDefaults.count.show;
             var moveStep = ModuleDefaults.count.slide;
             var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
             var srcollSpeed = ModuleDefaults.speed * 1000;
-
-            var $smallBoxNum = $smallBox.length / 8; //7或5
+            var $grayBoxNum = $this.find(".fristBox").length;
+            console.log($grayBoxNum);
+            var $smallBoxNum = $smallBox.length / $grayBoxNum; //7或5
 
             $slide_left.on('click', function () {
                 if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
@@ -358,7 +371,7 @@ var Module = function () {
                 var widowWidth = $(window).width();
                 $smallBox.width(BoxShow);
                 if (widowWidth <= 968) {
-                    Module.prototype.changeShow();
+                    self.changeShow();
                     return this;
                 } else {
                     var BoxShow = $(".main_box").width() / 7 - 2;
@@ -397,6 +410,7 @@ var Module = function () {
             var borderSpace = ModuleDefaults.count.show * 2;
             var BoxShow = ($(".main_box").width() - borderSpace) / ModuleDefaults.count.show;
             $(".content_box2").width(BoxShow);
+            // $(".content_box2").width(BoxShow);
             return this;
         }
 
