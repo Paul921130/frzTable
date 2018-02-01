@@ -203,7 +203,9 @@ $classname: 'frzTable';
 	.test{
 		background: red;
 	}
-	
+	.hide{
+		display: none!important;
+	}
 	// style on phone device
 	@media screen and (min-width: $screen-tablet) {
 	.main_box{

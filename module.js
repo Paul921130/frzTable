@@ -280,6 +280,7 @@ var Module = function () {
             var $slide_left = $this.find(".slide_left");
             var $slide_right = $this.find(".slide_right");
             var $smallBox = $this.find(".content_box2");
+            var $grayBox = $this.find(".grayBox");
             var $thisDot = $this.find(".dotCircle");
 
             var slider = ModuleDefaults.count.show;
@@ -287,7 +288,7 @@ var Module = function () {
             var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
             var srcollSpeed = ModuleDefaults.speed * 1000;
 
-            var $smallBoxNum = $smallBox.length / 8; //7或5
+            var $smallBoxNum = $smallBox.length / $grayBox.length; //7或5
 
             $slide_left.on('click', function () {
                 if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
