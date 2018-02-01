@@ -67,6 +67,14 @@ $classname: 'frzTable';
 		height: 70px;
 		background: #f1f1f1;
 		border: 1px solid #e2e2e2;
+		.airPort{
+			top: 12px;
+			left: 6px;
+			position: absolute;
+			line-height: 20px;
+			color: #666666;
+			font-size: 16px;
+		}
 	}
 	.mt-10{
 		height: 10px;
