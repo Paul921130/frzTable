@@ -237,7 +237,6 @@ var Module = function () {
             var srcollSpeed = ModuleDefaults.speed * 1000;
             // console.log(show-moveStep);
             $content_box2.attr("style", 'left: 0px;');
-
             // console.log(this.smallWidth);
             //正在處理中!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             // slide為1的時候會有問題
@@ -342,21 +341,41 @@ var Module = function () {
             //     };
             // });
             this.setShow();
-            //判定瀏覽器寬度設定格子數量	
+            //判定瀏覽器寬度設定格子數量
+            // 判定瀏覽器寬度設定格子數量 
             $(window).resize(function () {
-                // location.reload();//改變window尺寸時,重整畫面!
+                //改變window尺寸時,重整畫面!
+                var self = this;
+                var $this = this.$ele;
+                // var $smallBox = $this.find(".content_box2");
                 var widowWidth = $(window).width();
-                console.log(widowWidth);
-                $(".content_box2").width(BoxShow);
+                $this.find(".content_box2").width(BoxShow);
                 if (widowWidth <= 968) {
                     Module.prototype.changeShow();
                     return this;
                 } else {
                     var BoxShow = $(".main_box").width() / 7 - 2;
-                    $(".content_box2").width(BoxShow);
+                    var BoxShow2 = $(".main_box").width() / 5 - 2;
+                    $(".content_box2_defaule").width(BoxShow);
+                    $(".content_box2_rel").width(BoxShow2);
                     return this;
                 }
             }); //判定瀏覽器寬度設定格子數
+
+            // $(window).resize(function() {
+            // 	// location.reload();//改變window尺寸時,重整畫面!
+            //     var widowWidth = $(window).width();
+            //     console.log(widowWidth);
+            //     $(".content_box2").width(BoxShow);
+            //     if (widowWidth <= 968) {
+            //         Module.prototype.changeShow();
+            //         return this;
+            //     } else {
+            //         var BoxShow = ($(".main_box").width()) / 7 - 2;
+            //         $(".content_box2").width(BoxShow);
+            //         return this;
+            //     }
+            // }); //判定瀏覽器寬度設定格子數
             this.selectBox(); //表格選擇function
             this.selectDot();
             // this.changeShow();

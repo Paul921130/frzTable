@@ -42,7 +42,6 @@ class Module {
         var srcollSpeed = ModuleDefaults.speed * 1000;
         // console.log(show-moveStep);
         $content_box2.attr("style", 'left: 0px;');
-
         // console.log(this.smallWidth);
         //正在處理中!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         // slide為1的時候會有問題
@@ -148,10 +147,14 @@ class Module {
         // });
         this.setShow();
         //判定瀏覽器寬度設定格子數量
+        // 判定瀏覽器寬度設定格子數量 
         $(window).resize(function() {
             //改變window尺寸時,重整畫面!
+            var self = this;
+            var $this = this.$ele;
+            // var $smallBox = $this.find(".content_box2");
             var widowWidth = $(window).width();
-            $smallBox.width(BoxShow);
+            $this.find(".content_box2").width(BoxShow);
             if (widowWidth <= 968) {
                 Module.prototype.changeShow();
                 return this;
@@ -162,7 +165,7 @@ class Module {
                 $(".content_box2_rel").width(BoxShow2);
                 return this;
             }
-        });     
+        }); //判定瀏覽器寬度設定格子數
         	
         // $(window).resize(function() {
         // 	// location.reload();//改變window尺寸時,重整畫面!
