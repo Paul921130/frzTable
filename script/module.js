@@ -2,12 +2,12 @@ const ModuleName = 'frzTable';
 const ModuleDefaults = {
     count: {
         // M版時每次點擊往前往後移動幾格儲存格
-        slide: 3, // [number] 
+        slide: 2, // [number] 
         // M版時一個畫面show幾格儲存格 友情提示:show最好要大於slide
         show: 3 // [number] 
     },
     // 設定花多久時間移動完成
-    speed: .3, // [number] 
+    speed: .2, // [number] 
     // 每次點擊儲存格時會執行此callback，並帶入所點擊的儲存格jquery物件
     whenClick: function($element) {
         console.log($element)
@@ -103,8 +103,8 @@ class Module {
             if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
                 slider = slider - moveStep;
                 self.goLeftScroll();
-                $(".dotCircle").removeClass("dotSelect");//點點測試中
-                $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
+                $thisDot.removeClass("dotSelect");
+                $this.find(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
             } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
                 console.log('嘿!我在這!!!!!')
                
