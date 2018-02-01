@@ -59,12 +59,12 @@ $classname: 'frzTable';
 	// }
 	
 	.grayBox{
-		min-width: 70px;
+		font-size: 10px;
+		min-width: 60px;
 		position: relative;
 		color: #737373;
-		// font-weight: 400;
 		text-align: center;
-		line-height: 20px;
+		line-height: 70px;
 		height: 70px;
 		background: #f1f1f1;
 		border: 1px solid #e2e2e2;
@@ -106,7 +106,7 @@ $classname: 'frzTable';
 			color: #ff8e25;
 			.ic-ln{
 				display:none;
-				font-size: 22px;
+				font-size: 16px;
 			}
 		}
 		.plane{
@@ -121,12 +121,9 @@ $classname: 'frzTable';
 			color: #ff8e25;
 			.ic-ln{
 				display:none;
-				font-size: 22px;
+				font-size: 16px;
 			}
 		}
-	}
-	.mt-10{
-		height: 10px;
 	}
 	.content_box{
 		// position: absolute;
@@ -223,12 +220,12 @@ $classname: 'frzTable';
 		font-weight: bold;
 	}
 	.titleGo{
-		bottom: 0;
-		left: 0;
+		bottom: 2px;
+		left: 2px;
 	}
 	.titleBack{
-		right: 0;
-		top: 0;
+		right: 2px;
+		top: 2px;
 	}
 	.year{
 		position: absolute;
@@ -242,9 +239,10 @@ $classname: 'frzTable';
 	.year1{
 		position: absolute;
 		font-weight: bolder;
-		display:block;
+		// display:block;
+		line-height: 20px;
 		z-index:99;
-		top:-2px;
+		top:5px;
 		right: 5px;
 		color: #259e7b;
 	}
@@ -296,9 +294,9 @@ $classname: 'frzTable';
 				display:block;}
 		}
 	}
-	.marginT_15{
+	.marginT_20{
 		width: 100%;
-		height: 15px;
+		height: 20px;
 	}
 	.marginT_25{
 		width: 100%;
@@ -310,6 +308,9 @@ $classname: 'frzTable';
 		max-width: 768px;
 		// border-left:1px solid #e2e2e2;
 	}
+	.grayBox{
+		font-size: 14px;
+	}
 		// style on tablet device
 	}
 	@media screen and (min-width: $screen-desktop) {
@@ -317,9 +318,9 @@ $classname: 'frzTable';
 		max-width: 979px;
 		// border-left:1px solid #e2e2e2;
 	}
-	.year1{
-		top: -20px;
-	}
+	// .year1{
+	// 	top: -20px;
+	// }
 	.grayBox{
 		line-height: 70px;
 	}

@@ -2,7 +2,7 @@ const ModuleName = 'frzTable';
 const ModuleDefaults = {
     count: {
         // M版時每次點擊往前往後移動幾格儲存格
-        slide: 2, // [number] 
+        slide: 3, // [number] 
         // M版時一個畫面show幾格儲存格 友情提示:show最好要大於slide
         show: 3 // [number] 
     },
@@ -10,7 +10,7 @@ const ModuleDefaults = {
     speed: .3, // [number] 
     // 每次點擊儲存格時會執行此callback，並帶入所點擊的儲存格jquery物件
     whenClick: function($element) {
-        // console.log($element)
+        console.log($element)
     }
 };
 const ModuleReturns = ['output', 'methods'];
@@ -42,7 +42,8 @@ class Module {
         //表格顯示數量
         this.changeShow();
         this.resizeShow();
-        this.setShow();   
+        this.setShow();
+        this.whenClick();   
         return this;
     }
     methods() {
@@ -90,10 +91,10 @@ class Module {
         var $grayBox = $this.find(".grayBox");
         var $thisDot= $this.find(".dotCircle");
 
-        var slider = ModuleDefaults.count.show;
-        var moveStep = ModuleDefaults.count.slide;
-        var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
-        var srcollSpeed = ModuleDefaults.speed * 1000;
+        var slider = opts.count.show;
+        var moveStep = opts.count.slide;
+        var Defaultshow = opts.count.show; //show的數字不會變
+        var srcollSpeed = opts.speed * 1000;
         var $grayBoxNum= $this.find(".fristBox").length;
         console.log( $grayBoxNum );
         var $smallBoxNum = $smallBox.length / $grayBoxNum;//7或5
@@ -106,13 +107,12 @@ class Module {
                 $(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
             } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
                 console.log('嘿!我在這!!!!!')
-                var srcollSpeed = ModuleDefaults.speed * 1000;
+               
                 var srcollWidth = ($('.content_box2').width() + 2) * (slider - Defaultshow); //1px的border的一半
                 $smallBox.animate({
                     left: "+=" + srcollWidth + "",
                 }, srcollSpeed);
                 slider = Defaultshow;
-            
                 //點點
                 $thisDot.removeClass("dotSelect");
                 $this.find(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
@@ -252,7 +252,20 @@ class Module {
             $this.find(".dotCircle:nth-child(" + selectIndex + ")").addClass("dotSelect");
         });
         return this;
-
+    }
+    whenClick(){
+        var self = this;
+        var $this = this.$ele;
+        var opts = this.option; 
+        var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
+        var $element=$smallBoxN;
+        var $smallBox = $this.find(".content_box2");
+        var whenClickCallBack=this.option.whenClick;
+        
+        $smallBoxN.click( function($element) {
+            whenClickCallBack($element);
+        });
+        return this;
     }
 };
 
