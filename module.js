@@ -265,12 +265,16 @@ var Module = function () {
                 var selectRel = $this.find(".select").parent().index() - 1; //contentBox的index~有一行無用所以要減一   
                 console.log(selectRel);
                 $this.find(".content_box2:nth-child(" + selectIndex + ")").removeClass("hight_light").addClass("hight_light");
-                $('.content_box2_rel').removeClass('hight_light');
-                $(".boxHead_rel").removeClass("relSelect");
-                $(".left_rel").removeClass("relSelect");
+                $this.find('.content_box2_rel').removeClass('hight_light');
+                $this.find(".boxHead_rel").removeClass("relSelect");
+                $this.find(".left_rel").removeClass("relSelect");
+                // $('.content_box2_rel').removeClass('hight_light');
+                // $(".boxHead_rel").removeClass("relSelect");
+                // $(".left_rel").removeClass("relSelect");
                 $this.find(".left_rel:nth-child(" + selectRel + ")").addClass("relSelect");
                 $this.find(".boxHead_rel:nth-child(" + selectIndex + ")").addClass("relSelect");
-                $(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
+                $this.find(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
+                // $(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
                 $(this).removeClass('hight_light');
             });
             return this;
