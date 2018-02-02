@@ -222,11 +222,10 @@ var Module = function () {
             var opts = this.option;
             var $smallBox = $this.find(".content_box2");
             // $('.content_box2').attr("style", 'left: 0px;');
-
-
             $(window).resize(function () {
                 self.matchContainerWidth();
             });
+
             this.defaultScroll();
             //選擇表格function
             this.selectBox();
@@ -515,6 +514,16 @@ var Module = function () {
             var srcollSpeed = opts.speed * 1000;
             var $grayBoxNum = $this.find(".fristBox").length;
             var $smallBoxNum = $smallBox.length / $grayBoxNum; //7或5
+
+            // /////
+            // $(window).resize(function() {
+            //     var srcollWidth = ($smallBox.width() + 2) * (slider - Defaultshow); //1px的border的一半
+            //         $smallBox.animate({
+            //             left: "+=" + srcollWidth + "",
+            //         }, srcollSpeed);
+            //         slider = Defaultshow;
+            // });
+            // /////
 
             $slide_left.on('click', function () {
                 if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
