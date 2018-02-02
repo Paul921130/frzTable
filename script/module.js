@@ -32,10 +32,7 @@ class Module {
         $(window).resize(function() {
             self.matchContainerWidth();
         });
-
-        
         this.defaultScroll();
-    
         //選擇表格function
         this.selectBox(); 
         this.selectDot();
@@ -71,7 +68,6 @@ class Module {
                 $this.find(".left_rel:nth-child(" + selectRel + ")").addClass("relSelect");
                 $this.find(".boxHead_rel:nth-child(" + selectIndex + ")").addClass("relSelect");
                 $this.find(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
-
                 $(this).removeClass('hight_light');
         });
         return this;
@@ -100,7 +96,7 @@ class Module {
                 slider = slider - moveStep;
                 self.goLeftScroll();
                 $thisDot.removeClass("dotSelect");
-                $this.find(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
+                $this.find(".dotCircle:nth-child(" + (slider-(Defaultshow-moveStep)) + ")").addClass("dotSelect");
             } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
                
                 var srcollWidth = ($('.content_box2').width() + 2) * (slider - Defaultshow); //1px的border的一半
@@ -110,7 +106,7 @@ class Module {
                 slider = Defaultshow;
                 //點點
                 $thisDot.removeClass("dotSelect");
-                $this.find(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
+                $this.find(".dotCircle:nth-child(" + (slider-(Defaultshow-moveStep)) + ")").addClass("dotSelect");
                 //點點測試中
                 return this;
             }
@@ -120,7 +116,7 @@ class Module {
                 slider = slider - moveStep;
                 self.goLeftScroll();
                 $thisDot.removeClass("dotSelect");
-                $this.find(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
+                $this.find(".dotCircle:nth-child(" + (slider-(Defaultshow-moveStep)) + ")").addClass("dotSelect");
             }
         });
 
@@ -131,7 +127,7 @@ class Module {
                 self.goRightScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
                 //點點
                 $thisDot.removeClass("dotSelect");
-                $this.find(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
+                $this.find(".dotCircle:nth-child(" + (slider-(Defaultshow-moveStep)) + ")").addClass("dotSelect");
                 //點點測試中
             } else if ($smallBoxNum - slider > 0) {
                 var srcollWidth = ($('.content_box2').width() + 2) * ($smallBoxNum - slider) ; //1px的border的一半
@@ -142,7 +138,7 @@ class Module {
                 slider = slider + ($smallBoxNum - slider);
                 //點點
                 $thisDot.removeClass("dotSelect");
-                $this.find(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
+                $this.find(".dotCircle:nth-child(" + (slider-(Defaultshow-moveStep)) + ")").addClass("dotSelect");
                 //點點測試中
                 return this;
             };
@@ -155,9 +151,11 @@ class Module {
         var $this = this.$ele;
         var opts = this.option;
         var $smallBox = $this.find(".content_box2");
+        self.matchContainerWidth();
         $(window).resize(function() {
             //改變window尺寸時,重整畫面!
             var widowWidth = $(window).width();
+            self.matchContainerWidth();
             $smallBox.width(BoxShow);
             if (widowWidth <= 968) {
                 self.changeShow();
@@ -179,6 +177,7 @@ class Module {
         var $mainBox = $this.find(".main_box");
         var $smallBoxNumber=$smallBox.length / 8;//抓到了有幾排!!!分別上7下5!
         var widowWidth = $(window).width();
+        self.matchContainerWidth();
         if (widowWidth >= 968) {
         //左右各1px的border!!!!
             var BoxShow = ($(".main_box").width() / 7) - 2;
@@ -191,6 +190,13 @@ class Module {
         }
     }
     changeShow() {
+        var self = this;
+        var $this = this.$ele;
+        var $smallBox = $this.find(".content_box2");
+        var $mainBox = $this.find(".main_box");
+        var $smallBoxNumber=$smallBox.length / 8;//抓到了有幾排!!!分別上7下5!
+        var widowWidth = $(window).width();
+        self.matchContainerWidth();
         var borderSpace = this.option.count.show * 2;
         var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
         $(".content_box2").width(BoxShow);
@@ -241,7 +247,7 @@ class Module {
         var self = this;
         var $this = this.$ele;
         var opts = this.option; 
-        var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
+        var $smallBoxN = $this.find(".content_box2:not(.boxHead, .null)");
         var $smallBox = $this.find(".content_box2");
         var $thisDot= $this.find(".dotCircle");
 
