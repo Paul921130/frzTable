@@ -20,6 +20,18 @@ $classname: 'frzTable';
 // 您的CSS Code
 // -------------------------------------
 //以下範例可以刪除，改為您自已的CSS Code
+.boxSm{
+		width: 60px;
+		height: 40px;
+		background: black;
+		overflow: hidden;
+		padding:0;
+}
+.boxBGBG{
+		width: 2000px;
+		height: 20px;
+		background: red;
+}
 .#{$classname} {
 	overflow: hidden;
 	position:relative;
@@ -28,7 +40,6 @@ $classname: 'frzTable';
 		padding:0; 
 		box-sizing: border-box;
 	}
-
 	.container{
 		// max-width: 1200px;
 		margin: 0;
@@ -96,7 +107,6 @@ $classname: 'frzTable';
 			font-size: 16px;
 		}
 		.plane1{
-
 			position: absolute;
 			font-weight: bolder;
 			height: 22px;
@@ -129,7 +139,7 @@ $classname: 'frzTable';
 	.content_box{
 		display: flex;
 		// flex-direction:row;
-	// position: absolute;
+		// position: absolute;
 		// width:4000px;
 		background: #ddd;
 		overflow: hidden;

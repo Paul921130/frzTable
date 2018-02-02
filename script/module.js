@@ -66,7 +66,6 @@ class Module {
                 $this.find(".left_rel:nth-child(" + selectRel + ")").addClass("relSelect");
                 $this.find(".boxHead_rel:nth-child(" + selectIndex + ")").addClass("relSelect");
                 $this.find(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
-
                 $(this).removeClass('hight_light');
         });
         return this;
@@ -186,10 +185,16 @@ class Module {
         }
     }
     changeShow() {
-        var borderSpace = this.option.count.show * 2;
-        var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
-        $(".content_box2").width(BoxShow);
+        // var borderSpace = this.option.count.show * 2;
+        // var BoxShow = ($(".main_box").width())/this.option.count.show;
+        // // var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
+        // // scroll_left 
+        // var AAshow=($(".frzTable").width());
+        // var BBshow=($(".grayBox").width());
+        // // var BoxShow = (AAshow-BBshow)/this.option.count.show;
+        // console.log(BBshow);
         // $(".content_box2").width(BoxShow);
+        // // $(".content_box2").width(BoxShow);
         return this;
     }
 
