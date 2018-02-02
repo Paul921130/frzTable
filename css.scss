@@ -23,6 +23,9 @@ $classname: 'frzTable';
 
 .#{$classname} {
 	position: relative;
+	tr{
+		overflow: hidden;
+	}
 	*{
 		margin: 0;
 		padding:0; 
