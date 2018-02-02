@@ -81,7 +81,6 @@ class Module {
         var $smallBox = $this.find(".content_box2");
         var $grayBox = $this.find(".grayBox");
         var $thisDot= $this.find(".dotCircle");
-
         var slider = opts.count.show;
         var moveStep = opts.count.slide;
         var Defaultshow = opts.count.show; //show的數字不會變

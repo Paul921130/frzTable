@@ -32,24 +32,26 @@ $classname: 'frzTable';
 		height: 20px;
 		background: red;
 }
+.container{
+		// max-width: 1200px;
+		box-sizing:border-box;
+}
 .#{$classname} {
 	overflow: hidden;
 	position:relative;
+	.hidden{
+		display: none!important;
+	}
 	*{
 		margin: 0;
 		padding:0; 
 		box-sizing: border-box;
 	}
-	.container{
-		// max-width: 1200px;
-		margin: 0;
-		padding:0; 
-		box-sizing: border-box;
-	}
+
 	.dot{
 		position: absolute;
-		top: -20px;
-		right: 10px;
+		top: 0px;
+		left: 50%;
 		z-index: 99;
 		padding:5px; 
 		ul>li{
@@ -59,7 +61,7 @@ $classname: 'frzTable';
 			width: 10px;
 			height: 10px;
 			border-radius:50%;
-			background: #eaedf2;
+			background: $light-gray  ;
 			cursor: pointer; 
 		}
 		.dotSelect{
@@ -136,23 +138,24 @@ $classname: 'frzTable';
 			}
 		}
 	}
+	
 	.content_box{
 		display: flex;
 		// flex-direction:row;
 		// position: absolute;
 		// width:4000px;
-		background: #ddd;
+		// background: #ddd;
 		overflow: hidden;
 	}
 
-	.height100{
-		height: 100%;
-	}
+	// .height100{
+	// 	height: 100%;
+	// }
 	.content_box2{
 		position: relative;
-		flex:1;
+		flex:10;
 		text-align: center;
-		float: left;
+		// float: left;
 		line-height: 70px;
 		font-size: 14px;
 		// font-weight: bold;
