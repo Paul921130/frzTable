@@ -467,20 +467,20 @@ var Module = function () {
     }, {
         key: 'selectDot',
         value: function selectDot() {
-            var self = this;
-            var $this = this.$ele;
-            var opts = this.option;
-            var $smallBoxN = $this.find(".content_box2:not(.boxHead, .null)");
-            var $smallBox = $this.find(".content_box2");
-            var $thisDot = $this.find(".dotCircle");
+            // var self = this;
+            // var $this = this.$ele;
+            // var opts = this.option; 
+            // var $smallBoxN = $this.find(".content_box2:not(.boxHead, .null)");
+            // var $smallBox = $this.find(".content_box2");
+            // var $thisDot= $this.find(".dotCircle");
 
-            $smallBoxN.on('click', function () {
-                $thisDot.removeClass("dotSelect");
-                // $(".dotCircle").removeClass("dotSelect");
-                var selectIndex = $this.find(".select").index() + 1;
-                $this.find(".dotCircle:nth-child(" + selectIndex + ")").addClass("dotSelect");
-            });
-            return this;
+            // $smallBoxN.on('click', function() {
+            //     $thisDot.removeClass("dotSelect");
+            //     // $(".dotCircle").removeClass("dotSelect");
+            //     var selectIndex = $this.find(".select").index() + 1;
+            //     $this.find(".dotCircle:nth-child(" + selectIndex + ")").addClass("dotSelect");
+            // });
+            // return this;
         }
     }, {
         key: 'whenClick',
