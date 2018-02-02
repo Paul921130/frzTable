@@ -4,7 +4,7 @@ const ModuleDefaults = {
         // M版時每次點擊往前往後移動幾格儲存格
         slide: 2, // [number] 
         // M版時一個畫面show幾格儲存格 友情提示:show最好要大於slide
-        show: 3 // [number] 
+        show: 2 // [number] 
     },
     // 設定花多久時間移動完成
     speed: .2, // [number] 
@@ -36,10 +36,10 @@ class Module {
         this.selectDot();
 
         //表格顯示數量
-        // this.changeShow();
-        // this.setShow();
-        // this.resizeShow();
-        // this.setShow();
+        this.changeShow();
+        this.setShow();
+        this.resizeShow();
+        this.setShow();
         this.whenClick();   
         return this;
     }
@@ -254,7 +254,6 @@ class Module {
         var $element=$smallBoxN;
         var $smallBox = $this.find(".content_box2");
         var whenClickCallBack=this.option.whenClick;
-        
         $smallBoxN.click( function($element) {
             whenClickCallBack($element);
         });
