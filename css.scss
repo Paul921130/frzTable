@@ -20,6 +20,7 @@ $classname: 'frzTable';
 // 您的CSS Code
 // -------------------------------------
 //以下範例可以刪除，改為您自已的CSS Code
+
 .#{$classname} {
 	position: relative;
 	*{
@@ -29,7 +30,7 @@ $classname: 'frzTable';
 	}
 
 	.container{
-		max-width: 1200px;
+		// max-width: 1200px;
 		margin: 0;
 		padding:0; 
 		box-sizing: border-box;
@@ -202,7 +203,9 @@ $classname: 'frzTable';
 	.main_box{
 		box-sizing: border-box;
 		// border-right: 1px solid #e2e2e2; 
-		max-width:375px;//為什麼是375(iphone的寬)!!!我要搞清楚
+		 max-width:375px;//為什麼是375(iphone的寬)!!!我要搞清楚
+		 // max-width:768px;//為什麼是375(iphone的寬)!!!我要搞清楚
+		 
 		overflow: hidden;
 	}
 	.select{
@@ -315,7 +318,7 @@ $classname: 'frzTable';
 	}
 	@media screen and (min-width: $screen-desktop) {
 	.main_box{
-		max-width: 979px;
+		max-width: 960px;
 		// border-left:1px solid #e2e2e2;
 	}
 	// .year1{
@@ -330,7 +333,7 @@ $classname: 'frzTable';
 	@media screen and (min-width: $screen-lg-desktop) {
 	
 	.main_box{
-		max-width:1199px;
+		max-width:1200px;
 		// border-left:1px solid #e2e2e2;
 	}
 

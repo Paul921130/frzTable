@@ -224,6 +224,10 @@ var Module = function () {
             var $smallBox = $this.find(".content_box2");
             $('.content_box2').attr("style", 'left: 0px;');
 
+            $(window).resize(function () {
+                self.matchContainerWidth();
+            });
+
             this.defaultScroll();
 
             //選擇表格function
@@ -402,7 +406,16 @@ var Module = function () {
             // $(".content_box2").width(BoxShow);
             return this;
         }
-
+    }, {
+        key: 'matchContainerWidth',
+        value: function matchContainerWidth() {
+            var containerWidth = $('.container').width() + 10;
+            console.log(containerWidth);
+            // if( containerWidth<768 ){
+            $('.main_box').css("max-width", containerWidth + "px");
+            // }
+            return this;
+        }
         ///正在做!!!!不要斷掉!!!!!!!
 
     }, {
@@ -421,7 +434,6 @@ var Module = function () {
             }, srcollSpeed);
             return this;
         }
-
         ///正在做!!!!!不要斷掉!!!
         ///塞入了this.$ele 就不會互相影響了!!!
 

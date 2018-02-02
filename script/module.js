@@ -28,6 +28,11 @@ class Module {
         var opts = this.option;
         var $smallBox = $this.find(".content_box2");
         $('.content_box2').attr("style", 'left: 0px;');
+
+        $(window).resize(function() {
+            self.matchContainerWidth();
+        });
+
         
         this.defaultScroll();
     
@@ -192,7 +197,14 @@ class Module {
         // $(".content_box2").width(BoxShow);
         return this;
     }
-
+    matchContainerWidth(){
+        var containerWidth=$('.container').width()+10;
+        console.log(containerWidth);
+        // if( containerWidth<768 ){
+            $('.main_box').css("max-width",containerWidth +"px");
+        // }
+        return this;
+    }
     ///正在做!!!!不要斷掉!!!!!!!
     goLeftScroll() {
         var self = this;
@@ -208,7 +220,6 @@ class Module {
             }, srcollSpeed);
         return this;
     }
-
     ///正在做!!!!!不要斷掉!!!
     ///塞入了this.$ele 就不會互相影響了!!!
     goRightScroll() {
