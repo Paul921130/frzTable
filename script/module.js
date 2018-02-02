@@ -94,7 +94,7 @@ class Module {
                 slider = slider - moveStep;
                 self.goLeftScroll();
                 $thisDot.removeClass("dotSelect");
-                $this.find(".dotCircle:nth-child(" + (slider-(Defaultshow-moveStep)) + ")").addClass("dotSelect");
+                $this.find(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
             } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
                
                 var srcollWidth = ($smallBox.width() + 2) * (slider - Defaultshow); //1px的border的一半
@@ -104,7 +104,7 @@ class Module {
                 slider = Defaultshow;
                 //點點
                 $thisDot.removeClass("dotSelect");
-                $this.find(".dotCircle:nth-child(" + (slider-(Defaultshow-moveStep)) + ")").addClass("dotSelect");
+                $this.find(".dotCircle:nth-child(" + (slider-2) + ")").addClass("dotSelect");
                 //點點測試中
                 return this;
             }
@@ -125,7 +125,11 @@ class Module {
                 self.goRightScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
                 //點點
                 $thisDot.removeClass("dotSelect");
-                $this.find(".dotCircle:nth-child(" + (slider-(Defaultshow-moveStep)) + ")").addClass("dotSelect");
+                if(moveStep!==1){
+                $this.find(".dotCircle:nth-child(" + (slider- 2) + ")").addClass("dotSelect");
+                }else{
+                 $this.find(".dotCircle:nth-child(" + (slider-(Defaultshow-moveStep)) + ")").addClass("dotSelect");   
+                }
                 //點點測試中
             } else if ($smallBoxNum - slider > 0) {
                 var srcollWidth = ($smallBox.width() + 2) * ($smallBoxNum - slider) ; //1px的border的一半
@@ -136,7 +140,7 @@ class Module {
                 slider = slider + ($smallBoxNum - slider);
                 //點點
                 $thisDot.removeClass("dotSelect");
-                $this.find(".dotCircle:nth-child(" + (slider-(Defaultshow-moveStep)) + ")").addClass("dotSelect");
+                $this.find(".dotCircle:nth-child(" + (slider- 2) + ")").addClass("dotSelect");
                 //點點測試中
                 return this;
             };
@@ -267,7 +271,7 @@ class Module {
         var $smallBox = $this.find(".content_box2");
         var whenClickCallBack=this.option.whenClick;
         $smallBoxN.click( function($element) {
-            var $element=$(".select");
+            var $element=$this.find(".content_box2:not(.boxHead)");
             whenClickCallBack($element);
         });
         return this;
