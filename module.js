@@ -222,10 +222,6 @@ var Module = function () {
             var $this = this.$ele;
             var opts = this.option;
             var $smallBox = $this.find(".content_box2");
-
-            console.log('跑了兩次!');
-            console.log($this); //出來兩個一個是default 一個是rel
-
             $('.content_box2').attr("style", 'left: 0px;');
 
             this.defaultScroll();
@@ -264,22 +260,18 @@ var Module = function () {
                 $(this).addClass('select').siblings().addClass('hight_light');
                 var selectIndex = $this.find(".select").index() + 1; //:nth-child()的索引值從1開始
                 var selectRel = $this.find(".select").parent().index() - 1; //contentBox的index~有一行無用所以要減一   
-                console.log(selectRel);
                 $this.find(".content_box2:nth-child(" + selectIndex + ")").removeClass("hight_light").addClass("hight_light");
                 $this.find('.content_box2_rel').removeClass('hight_light');
                 $this.find(".boxHead_rel").removeClass("relSelect");
                 $this.find(".left_rel").removeClass("relSelect");
-                // $('.content_box2_rel').removeClass('hight_light');
-                // $(".boxHead_rel").removeClass("relSelect");
-                // $(".left_rel").removeClass("relSelect");
                 $this.find(".left_rel:nth-child(" + selectRel + ")").addClass("relSelect");
                 $this.find(".boxHead_rel:nth-child(" + selectIndex + ")").addClass("relSelect");
                 $this.find(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
-                // $(".boxHead:nth-child(" + selectIndex + ")").removeClass("hight_light");
+
                 $(this).removeClass('hight_light');
             });
             return this;
-        } //為什麼上面的完全沒問題 可是下面的卻會吃到上面的!?解決
+        }
 
         ///defaultScroll 測試中!!!
 
@@ -300,7 +292,6 @@ var Module = function () {
             var Defaultshow = opts.count.show; //show的數字不會變
             var srcollSpeed = opts.speed * 1000;
             var $grayBoxNum = $this.find(".fristBox").length;
-            console.log($grayBoxNum);
             var $smallBoxNum = $smallBox.length / $grayBoxNum; //7或5
 
             $slide_left.on('click', function () {
@@ -310,7 +301,6 @@ var Module = function () {
                     $thisDot.removeClass("dotSelect");
                     $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
                 } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
-                    console.log('嘿!我在這!!!!!');
 
                     var srcollWidth = ($('.content_box2').width() + 2) * (slider - Defaultshow); //1px的border的一半
                     $smallBox.animate({
@@ -343,7 +333,6 @@ var Module = function () {
                     $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
                     //點點測試中
                 } else if ($smallBoxNum - slider > 0) {
-                    console.log('天啊!!!!今天好冷!');
                     var srcollWidth = ($('.content_box2').width() + 2) * ($smallBoxNum - slider); //1px的border的一半
                     $smallBox.animate({
                         left: "-=" + srcollWidth + ""
@@ -400,15 +389,15 @@ var Module = function () {
                 $(".content_box2_defaule").width(BoxShow);
                 $(".content_box2_rel").width(BoxShow2);
             } else {
-                Module.prototype.changeShow();
+                self.changeShow();
                 return this;
             }
         }
     }, {
         key: 'changeShow',
         value: function changeShow() {
-            var borderSpace = ModuleDefaults.count.show * 2;
-            var BoxShow = ($(".main_box").width() - borderSpace) / ModuleDefaults.count.show;
+            var borderSpace = this.option.count.show * 2;
+            var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
             $(".content_box2").width(BoxShow);
             // $(".content_box2").width(BoxShow);
             return this;
@@ -422,11 +411,11 @@ var Module = function () {
             var self = this;
             var $this = this.$ele;
             var $smallBox = $this.find('.content_box2');
-            var slider = ModuleDefaults.count.show;
-            var moveStep = ModuleDefaults.count.slide;
-            var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
-            var srcollSpeed = ModuleDefaults.speed * 1000;
-            var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
+            var slider = this.option.count.show;
+            var moveStep = this.option.count.slide;
+            var Defaultshow = this.option.count.show; //show的數字不會變
+            var srcollSpeed = this.option.speed * 1000;
+            var srcollWidth = ($('.content_box2').width() + 2) * this.option.count.slide;
             $smallBox.animate({
                 left: "+=" + srcollWidth + ""
             }, srcollSpeed);
@@ -443,11 +432,11 @@ var Module = function () {
             var $this = this.$ele;
             var opts = this.option;
             var $smallBox = $this.find('.content_box2');
-            var slider = ModuleDefaults.count.show;
-            var moveStep = ModuleDefaults.count.slide;
-            var Defaultshow = ModuleDefaults.count.show; //show的數字不會變
-            var srcollSpeed = ModuleDefaults.speed * 1000;
-            var srcollWidth = ($('.content_box2').width() + 2) * ModuleDefaults.count.slide;
+            var slider = this.option.count.show;
+            var moveStep = this.option.count.slide;
+            var Defaultshow = this.option.count.show; //show的數字不會變
+            var srcollSpeed = this.option.speed * 1000;
+            var srcollWidth = ($('.content_box2').width() + 2) * this.option.count.slide;
             $smallBox.animate({
                 left: "-=" + srcollWidth + ""
             }, srcollSpeed); //這裡是剛好滾完的狀態,如slide:2 show:3       
