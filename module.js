@@ -231,7 +231,8 @@ var Module = function () {
             this.selectDot();
 
             //表格顯示數量
-            this.changeShow();
+            // this.changeShow();
+            // this.setShow();
             // this.resizeShow();
             // this.setShow();
             this.whenClick();
@@ -394,16 +395,16 @@ var Module = function () {
     }, {
         key: 'changeShow',
         value: function changeShow() {
-            // var borderSpace = this.option.count.show * 2;
-            // var BoxShow = ($(".main_box").width())/this.option.count.show;
-            // // var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
-            // // scroll_left 
-            // var AAshow=($(".frzTable").width());
-            // var BBshow=($(".grayBox").width());
-            // // var BoxShow = (AAshow-BBshow)/this.option.count.show;
-            // console.log(BBshow);
+            var borderSpace = this.option.count.show * 2;
+            var BoxShow = $(".main_box").width() / this.option.count.show;
+            // var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
+            // scroll_left 
+            var AAshow = $(".frzTable").width();
+            var BBshow = $(".grayBox").width();
+            // var BoxShow = (AAshow-BBshow)/this.option.count.show;
+            console.log(BBshow);
+            $(".content_box2").width(BoxShow);
             // $(".content_box2").width(BoxShow);
-            // // $(".content_box2").width(BoxShow);
             return this;
         }
 
