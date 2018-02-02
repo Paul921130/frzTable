@@ -37,8 +37,8 @@ class Module {
 
         //表格顯示數量
         this.changeShow();
-        this.resizeShow();
-        this.setShow();
+        // this.resizeShow();
+        // this.setShow();
         this.whenClick();   
         return this;
     }
@@ -233,7 +233,6 @@ class Module {
         var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
         var $smallBox = $this.find(".content_box2");
         var $thisDot= $this.find(".dotCircle");
-
         $smallBoxN.on('click', function() {
             $thisDot.removeClass("dotSelect");
             // $(".dotCircle").removeClass("dotSelect");

@@ -21,7 +21,8 @@ $classname: 'frzTable';
 // -------------------------------------
 //以下範例可以刪除，改為您自已的CSS Code
 .#{$classname} {
-	position: relative;
+	overflow: hidden;
+	position:relative;
 	*{
 		margin: 0;
 		padding:0; 
@@ -29,7 +30,7 @@ $classname: 'frzTable';
 	}
 
 	.container{
-		max-width: 1200px;
+		// max-width: 1200px;
 		margin: 0;
 		padding:0; 
 		box-sizing: border-box;
@@ -60,7 +61,7 @@ $classname: 'frzTable';
 	
 	.grayBox{
 		font-size: 10px;
-		min-width: 60px;
+		// min-width: 60px;
 		position: relative;
 		color: #737373;
 		text-align: center;
@@ -126,8 +127,10 @@ $classname: 'frzTable';
 		}
 	}
 	.content_box{
-		// position: absolute;
-		width:4000px;
+		display: flex;
+		// flex-direction:row;
+	// position: absolute;
+		// width:4000px;
 		background: #ddd;
 		overflow: hidden;
 	}
@@ -137,6 +140,7 @@ $classname: 'frzTable';
 	}
 	.content_box2{
 		position: relative;
+		flex:1;
 		text-align: center;
 		float: left;
 		line-height: 70px;
@@ -200,9 +204,9 @@ $classname: 'frzTable';
 		margin-top: -20px;
 	}
 	.main_box{
-		box-sizing: border-box;
-		// border-right: 1px solid #e2e2e2; 
-		max-width:375px;//為什麼是375(iphone的寬)!!!我要搞清楚
+		max-width:100%;
+		box-sizing:border-box;
+		// max-width:375px;//為什麼是375(iphone的寬)!!!我要搞清楚
 		overflow: hidden;
 	}
 	.select{
@@ -286,12 +290,14 @@ $classname: 'frzTable';
 		.plane{
 			
 			.ic-ln{
-				display:block;}
+				display:block;
+			}
 		}
 		.plane1{
 		
 			.ic-ln{
-				display:block;}
+				display:block;
+			}
 		}
 	}
 	.marginT_20{
@@ -304,20 +310,12 @@ $classname: 'frzTable';
 	}  
 	// style on phone device
 	@media screen and (min-width: $screen-tablet) {
-	.main_box{
-		max-width: 768px;
-		// border-left:1px solid #e2e2e2;
-	}
 	.grayBox{
 		font-size: 14px;
 	}
 		// style on tablet device
 	}
 	@media screen and (min-width: $screen-desktop) {
-	.main_box{
-		max-width: 979px;
-		// border-left:1px solid #e2e2e2;
-	}
 	// .year1{
 	// 	top: -20px;
 	// }
@@ -329,10 +327,10 @@ $classname: 'frzTable';
 	}
 	@media screen and (min-width: $screen-lg-desktop) {
 	
-	.main_box{
-		max-width:1199px;
-		// border-left:1px solid #e2e2e2;
-	}
+	// .main_box{
+	// 	// max-width:1199px;
+	// 	// border-left:1px solid #e2e2e2;
+	// }
 
 		// style on desktop device
 	}
