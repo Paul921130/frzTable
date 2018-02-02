@@ -20,14 +20,13 @@ class Module {
         this.ele = ele;
         this.$ele = $(ele);
         this.option = options;
-        this.slider = 1;
     }
     init() {
         var self = this;
         var $this = this.$ele;
         var opts = this.option;
         var $smallBox = $this.find(".content_box2");
-        $('.content_box2').attr("style", 'left: 0px;');
+        // $('.content_box2').attr("style", 'left: 0px;');
 
         $(window).resize(function() {
             self.matchContainerWidth();
@@ -200,7 +199,7 @@ class Module {
         var borderSpace = opts.count.show * 2;
         // var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
         var BoxShow = ( $mainBox.width() - borderSpace) / opts.count.show;
-        $(".content_box2").width(BoxShow);
+        $smallBox.width(BoxShow);
         // $(".content_box2").width(BoxShow);
         return this;
     }
@@ -267,8 +266,8 @@ class Module {
         var $element=$smallBoxN;
         var $smallBox = $this.find(".content_box2");
         var whenClickCallBack=this.option.whenClick;
-        
         $smallBoxN.click( function($element) {
+            var $element=$(".select");
             whenClickCallBack($element);
         });
         return this;
