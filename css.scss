@@ -40,7 +40,7 @@ $classname: 'frzTable';
 	overflow: hidden;
 	position:relative;
 	.content_box{
-		transform: translateX(-14.3%);
+		// transform: translateX(-14.3%);
 	}
 	.left_Td{
 		z-index: 999;
@@ -161,7 +161,7 @@ $classname: 'frzTable';
 		position: relative;
 		flex:10;
 		text-align: center;
-		// float: left;
+		float: left;
 		line-height: 70px;
 		font-size: 14px;
 		// font-weight: bold;
@@ -223,7 +223,8 @@ $classname: 'frzTable';
 		top: 50%;
 		margin-top: -20px;
 	}
-	.main_box{
+	.content_box {
+		display: flex;
 		max-width:100%;
 		box-sizing:border-box;
 		// max-width:375px;//為什麼是375(iphone的寬)!!!我要搞清楚
