@@ -301,7 +301,7 @@ var Module = function () {
                     $this.find(".dotCircle:nth-child(" + (slider - (Defaultshow - moveStep)) + ")").addClass("dotSelect");
                 } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
 
-                    var srcollWidth = ($('.content_box2').width() + 2) * (slider - Defaultshow); //1px的border的一半
+                    var srcollWidth = ($smallBox.width() + 2) * (slider - Defaultshow); //1px的border的一半
                     $smallBox.animate({
                         left: "+=" + srcollWidth + ""
                     }, srcollSpeed);
@@ -332,7 +332,7 @@ var Module = function () {
                     $this.find(".dotCircle:nth-child(" + (slider - (Defaultshow - moveStep)) + ")").addClass("dotSelect");
                     //點點測試中
                 } else if ($smallBoxNum - slider > 0) {
-                    var srcollWidth = ($('.content_box2').width() + 2) * ($smallBoxNum - slider); //1px的border的一半
+                    var srcollWidth = ($smallBox.width() + 2) * ($smallBoxNum - slider); //1px的border的一半
                     $smallBox.animate({
                         left: "-=" + srcollWidth + ""
                     }, srcollSpeed);
@@ -434,7 +434,7 @@ var Module = function () {
             var moveStep = this.option.count.slide;
             var Defaultshow = this.option.count.show; //show的數字不會變
             var srcollSpeed = this.option.speed * 1000;
-            var srcollWidth = ($('.content_box2').width() + 2) * this.option.count.slide;
+            var srcollWidth = ($smallBox.width() + 2) * this.option.count.slide;
             $smallBox.animate({
                 left: "+=" + srcollWidth + ""
             }, srcollSpeed);
@@ -454,7 +454,7 @@ var Module = function () {
             var moveStep = this.option.count.slide;
             var Defaultshow = this.option.count.show; //show的數字不會變
             var srcollSpeed = this.option.speed * 1000;
-            var srcollWidth = ($('.content_box2').width() + 2) * this.option.count.slide;
+            var srcollWidth = ($smallBox.width() + 2) * this.option.count.slide;
             $smallBox.animate({
                 left: "-=" + srcollWidth + ""
             }, srcollSpeed); //這裡是剛好滾完的狀態,如slide:2 show:3       
