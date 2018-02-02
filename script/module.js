@@ -2,12 +2,12 @@ const ModuleName = 'frzTable';
 const ModuleDefaults = {
     count: {
         // M版時每次點擊往前往後移動幾格儲存格
-        slide: 2, // [number] 
+        slide: 3, // [number] 
         // M版時一個畫面show幾格儲存格 友情提示:show最好要大於slide
         show: 3 // [number] 
     },
     // 設定花多久時間移動完成
-    speed: .2, // [number] 
+    speed: .1, // [number] 
     // 每次點擊儲存格時會執行此callback，並帶入所點擊的儲存格jquery物件
     whenClick: function($element) {
         console.log($element)
@@ -36,7 +36,6 @@ class Module {
         //選擇表格function
         this.selectBox(); 
         this.selectDot();
-
         //表格顯示數量
         this.changeShow();
         this.resizeShow();
@@ -192,20 +191,21 @@ class Module {
     changeShow() {
         var self = this;
         var $this = this.$ele;
+        var opts = this.option;
         var $smallBox = $this.find(".content_box2");
         var $mainBox = $this.find(".main_box");
-        var $smallBoxNumber=$smallBox.length / 8;//抓到了有幾排!!!分別上7下5!
+        var $smallBoxNumber= $smallBox.length / 8;//抓到了有幾排!!!分別上7下5!
         var widowWidth = $(window).width();
         self.matchContainerWidth();
-        var borderSpace = this.option.count.show * 2;
-        var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
+        var borderSpace = opts.count.show * 2;
+        // var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
+        var BoxShow = ( $mainBox.width() - borderSpace) / opts.count.show;
         $(".content_box2").width(BoxShow);
         // $(".content_box2").width(BoxShow);
         return this;
     }
     matchContainerWidth(){
         var containerWidth=$('.container').width()+10;
-        console.log(containerWidth);
         // if( containerWidth<768 ){
             $('.main_box').css("max-width",containerWidth +"px");
         // }
