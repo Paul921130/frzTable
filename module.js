@@ -348,6 +348,9 @@ var Module = function () {
             return this;
         }
 
+        ///////測試中
+
+
         // ////////////////////////////////////////////////////////////////////scroll區 testing
         // ///defaultScroll 測試中!!!
         // defaultScroll(){
@@ -515,15 +518,18 @@ var Module = function () {
             var $grayBoxNum = $this.find(".fristBox").length;
             var $smallBoxNum = $smallBox.length / $grayBoxNum; //7或5
 
-            // /////
-            // $(window).resize(function() {
-            //     var srcollWidth = ($smallBox.width() + 2) * (slider - Defaultshow); //1px的border的一半
-            //         $smallBox.animate({
-            //             left: "+=" + srcollWidth + "",
-            //         }, srcollSpeed);
-            //         slider = Defaultshow;
-            // });
-            // /////
+            /////測試中!!!!!!!!!!
+            $(window).resize(function () {
+                var srcollWidth = ($smallBox.width() + 2) * (slider - Defaultshow); //1px的border的一半
+                $smallBox.animate({
+                    left: "+=" + srcollWidth + ""
+                }, srcollSpeed);
+                slider = Defaultshow;
+                $thisDot.removeClass("dotSelect");
+                $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                return this;
+            });
+            /////
 
             $slide_left.on('click', function () {
                 if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
