@@ -341,7 +341,7 @@ var Module = function () {
     }, {
         key: 'matchContainerWidth',
         value: function matchContainerWidth() {
-            var containerWidth = $('.container').width() + 10;
+            var containerWidth = $('.container').width();
             // if( containerWidth<768 ){
             $('.main_box').css("max-width", containerWidth + "px");
             // }
@@ -368,12 +368,14 @@ var Module = function () {
             var $grayBoxNum = $this.find(".fristBox").length;
             var $smallBoxNum = $smallBox.length / $grayBoxNum; //7或5
 
+
+            self.matchContainerWidth();
             /////測試中!!!!!!!!!!
             $(window).resize(function () {
                 var srcollWidth = ($smallBox.width() + 2) * (slider - Defaultshow); //1px的border的一半
                 $smallBox.animate({
                     left: "+=" + srcollWidth + ""
-                }, 1);
+                }, 0.0005);
                 slider = Defaultshow;
                 $thisDot.removeClass("dotSelect");
                 $this.find(".dotCircle:nth-child(1)").addClass("dotSelect");
