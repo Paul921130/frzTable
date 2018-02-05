@@ -363,7 +363,7 @@ var Module = function () {
 
             var slider = opts.count.show;
             var moveStep = opts.count.slide;
-            var Defaultshow = opts.count.show; //show的數字不會變
+            var Defaultshow = opts.count.show; //show的數字不會變,原點
             var srcollSpeed = opts.speed * 1000;
             var $grayBoxNum = $this.find(".fristBox").length;
             var $smallBoxNum = $smallBox.length / $grayBoxNum; //7或5
