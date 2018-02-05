@@ -323,7 +323,7 @@ class Module {
                 return this;
         });
         /////
-
+        
         $slide_left.on('click', function() {
             if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
                 slider = slider - moveStep;
