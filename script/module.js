@@ -319,7 +319,7 @@ class Module {
                 }, 1);
                 slider = Defaultshow;
                 $thisDot.removeClass("dotSelect");
-                $this.find(".dotCircle:nth-child(" + (slider- 2) + ")").addClass("dotSelect");
+                $this.find(".dotCircle:nth-child(1)").addClass("dotSelect");
                 return this;
         });
         /////
