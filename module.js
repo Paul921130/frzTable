@@ -222,10 +222,10 @@ var Module = function () {
             var opts = this.option;
             var $smallBox = $this.find(".content_box2");
             // $('.content_box2').attr("style", 'left: 0px;');
-
             $(window).resize(function () {
                 self.matchContainerWidth();
             });
+
             this.defaultScroll();
             //選擇表格function
             this.selectBox();
@@ -270,81 +270,6 @@ var Module = function () {
                 $(this).removeClass('hight_light');
             });
             return this;
-        }
-
-        ///defaultScroll 測試中!!!
-
-    }, {
-        key: 'defaultScroll',
-        value: function defaultScroll() {
-            var self = this;
-            var $this = this.$ele;
-            var opts = this.option;
-            var $slide_left = $this.find(".slide_left");
-            var $slide_right = $this.find(".slide_right");
-            var $smallBox = $this.find(".content_box2");
-            var $grayBox = $this.find(".grayBox");
-            var $thisDot = $this.find(".dotCircle");
-
-            var slider = opts.count.show;
-            var moveStep = opts.count.slide;
-            var Defaultshow = opts.count.show; //show的數字不會變
-            var srcollSpeed = opts.speed * 1000;
-            var $grayBoxNum = $this.find(".fristBox").length;
-            var $smallBoxNum = $smallBox.length / $grayBoxNum; //7或5
-
-            $slide_left.on('click', function () {
-                if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
-                    slider = slider - moveStep;
-                    self.goLeftScroll();
-                    $thisDot.removeClass("dotSelect");
-                    $this.find(".dotCircle:nth-child(" + (slider - (Defaultshow - moveStep)) + ")").addClass("dotSelect");
-                } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
-
-                    var srcollWidth = ($smallBox.width() + 2) * (slider - Defaultshow); //1px的border的一半
-                    $smallBox.animate({
-                        left: "+=" + srcollWidth + ""
-                    }, srcollSpeed);
-                    slider = Defaultshow;
-                    //點點
-                    $thisDot.removeClass("dotSelect");
-                    $this.find(".dotCircle:nth-child(" + (slider - (Defaultshow - moveStep)) + ")").addClass("dotSelect");
-                    //點點測試中
-                    return this;
-                }
-            });
-            $slide_left.on('click', function () {
-                if (moveStep === 1 && slider - Defaultshow > 0) {
-                    slider = slider - moveStep;
-                    self.goLeftScroll();
-                    $thisDot.removeClass("dotSelect");
-                    $this.find(".dotCircle:nth-child(" + (slider - (Defaultshow - moveStep)) + ")").addClass("dotSelect");
-                }
-            });
-
-            //處理完成95%!!!!!!!!!!!!!!
-            $slide_right.on('click', function () {
-                if (slider + moveStep <= $smallBoxNum) {
-                    slider = slider + moveStep;
-                    self.goRightScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
-                    //點點
-                    $thisDot.removeClass("dotSelect");
-                    $this.find(".dotCircle:nth-child(" + (slider - (Defaultshow - moveStep)) + ")").addClass("dotSelect");
-                    //點點測試中
-                } else if ($smallBoxNum - slider > 0) {
-                    var srcollWidth = ($smallBox.width() + 2) * ($smallBoxNum - slider); //1px的border的一半
-                    $smallBox.animate({
-                        left: "-=" + srcollWidth + ""
-                    }, srcollSpeed);
-
-                    slider = slider + ($smallBoxNum - slider);
-                    //點點
-                    $thisDot.removeClass("dotSelect");
-                    $this.find(".dotCircle:nth-child(" + (slider - (Defaultshow - moveStep)) + ")").addClass("dotSelect");
-                    //點點測試中
-                    return this;
-                };
-            });
         }
     }, {
         key: 'resizeShow',
@@ -422,6 +347,97 @@ var Module = function () {
             // }
             return this;
         }
+        ///defaultScroll 測試中!!!
+
+    }, {
+        key: 'defaultScroll',
+        value: function defaultScroll() {
+            var self = this;
+            var $this = this.$ele;
+            var opts = this.option;
+            var $slide_left = $this.find(".slide_left");
+            var $slide_right = $this.find(".slide_right");
+            var $smallBox = $this.find(".content_box2");
+            var $grayBox = $this.find(".grayBox");
+            var $thisDot = $this.find(".dotCircle");
+
+            var slider = opts.count.show;
+            var moveStep = opts.count.slide;
+            var Defaultshow = opts.count.show; //show的數字不會變,原點
+            var srcollSpeed = opts.speed * 1000;
+            var $grayBoxNum = $this.find(".fristBox").length;
+            var $smallBoxNum = $smallBox.length / $grayBoxNum; //7或5
+
+            /////測試中!!!!!!!!!!
+            $(window).resize(function () {
+                var srcollWidth = ($smallBox.width() + 2) * (slider - Defaultshow); //1px的border的一半
+                $smallBox.animate({
+                    left: "+=" + srcollWidth + ""
+                }, 1);
+                slider = Defaultshow;
+                $thisDot.removeClass("dotSelect");
+                $this.find(".dotCircle:nth-child(1)").addClass("dotSelect");
+                return this;
+            });
+            /////
+
+            $slide_left.on('click', function () {
+                if (slider - Defaultshow > 0 && slider > Defaultshow * 2 && moveStep !== 1) {
+                    slider = slider - moveStep;
+                    self.goLeftScroll();
+                    $thisDot.removeClass("dotSelect");
+                    $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                } else if (slider - Defaultshow > 0 && slider <= Defaultshow * 2 && moveStep !== 1) {
+
+                    var srcollWidth = ($smallBox.width() + 2) * (slider - Defaultshow); //1px的border的一半
+                    $smallBox.animate({
+                        left: "+=" + srcollWidth + ""
+                    }, srcollSpeed);
+                    slider = Defaultshow;
+                    //點點
+                    $thisDot.removeClass("dotSelect");
+                    $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                    //點點測試中
+                    return this;
+                }
+            });
+            $slide_left.on('click', function () {
+                if (moveStep === 1 && slider - Defaultshow > 0) {
+                    slider = slider - moveStep;
+                    self.goLeftScroll();
+                    $thisDot.removeClass("dotSelect");
+                    $this.find(".dotCircle:nth-child(" + (slider - (Defaultshow - moveStep)) + ")").addClass("dotSelect");
+                }
+            });
+
+            //處理完成95%!!!!!!!!!!!!!!
+            $slide_right.on('click', function () {
+                if (slider + moveStep <= $smallBoxNum) {
+                    slider = slider + moveStep;
+                    self.goRightScroll(); //這裡是剛好滾完的狀態,如slide:2 show:3
+                    //點點
+                    $thisDot.removeClass("dotSelect");
+                    if (moveStep !== 1) {
+                        $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                    } else {
+                        $this.find(".dotCircle:nth-child(" + (slider - (Defaultshow - moveStep)) + ")").addClass("dotSelect");
+                    }
+                    //點點測試中
+                } else if ($smallBoxNum - slider > 0) {
+                    var srcollWidth = ($smallBox.width() + 2) * ($smallBoxNum - slider); //1px的border的一半
+                    $smallBox.animate({
+                        left: "-=" + srcollWidth + ""
+                    }, srcollSpeed);
+
+                    slider = slider + ($smallBoxNum - slider);
+                    //點點
+                    $thisDot.removeClass("dotSelect");
+                    $this.find(".dotCircle:nth-child(" + (slider - 2) + ")").addClass("dotSelect");
+                    //點點測試中
+                    return this;
+                };
+            });
+        }
         ///正在做!!!!不要斷掉!!!!!!!
 
     }, {
@@ -460,23 +476,25 @@ var Module = function () {
             }, srcollSpeed); //這裡是剛好滾完的狀態,如slide:2 show:3       
             return this;
         }
+        ////////////////////////////////////////////////////////////////////scroll區
+
     }, {
         key: 'selectDot',
         value: function selectDot() {
-            var self = this;
-            var $this = this.$ele;
-            var opts = this.option;
-            var $smallBoxN = $this.find(".content_box2:not(.boxHead, .null)");
-            var $smallBox = $this.find(".content_box2");
-            var $thisDot = $this.find(".dotCircle");
+            // var self = this;
+            // var $this = this.$ele;
+            // var opts = this.option; 
+            // var $smallBoxN = $this.find(".content_box2:not(.boxHead, .null)");
+            // var $smallBox = $this.find(".content_box2");
+            // var $thisDot= $this.find(".dotCircle");
 
-            $smallBoxN.on('click', function () {
-                $thisDot.removeClass("dotSelect");
-                // $(".dotCircle").removeClass("dotSelect");
-                var selectIndex = $this.find(".select").index() + 1;
-                $this.find(".dotCircle:nth-child(" + selectIndex + ")").addClass("dotSelect");
-            });
-            return this;
+            // $smallBoxN.on('click', function() {
+            //     $thisDot.removeClass("dotSelect");
+            //     // $(".dotCircle").removeClass("dotSelect");
+            //     var selectIndex = $this.find(".select").index() + 1;
+            //     $this.find(".dotCircle:nth-child(" + selectIndex + ")").addClass("dotSelect");
+            // });
+            // return this;
         }
     }, {
         key: 'whenClick',
@@ -489,7 +507,7 @@ var Module = function () {
             var $smallBox = $this.find(".content_box2");
             var whenClickCallBack = this.option.whenClick;
             $smallBoxN.click(function ($element) {
-                var $element = $(".select");
+                var $element = $this.find(".content_box2:not(.boxHead)");
                 whenClickCallBack($element);
             });
             return this;
