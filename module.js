@@ -225,6 +225,7 @@ var Module = function () {
             $(window).resize(function () {
                 self.matchContainerWidth();
             });
+
             //按鈕顯示
             this.showHideBtn();
 
@@ -501,22 +502,6 @@ var Module = function () {
             // return this;
         }
     }, {
-        key: 'whenClick',
-        value: function whenClick() {
-            var self = this;
-            var $this = this.$ele;
-            var opts = this.option;
-            var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
-            var $element = $smallBoxN;
-            var $smallBox = $this.find(".content_box2");
-            var whenClickCallBack = this.option.whenClick;
-            $smallBoxN.click(function ($element) {
-                var $element = $this.find(".select");
-                whenClickCallBack($element);
-            });
-            return this;
-        }
-    }, {
         key: 'showHideBtn',
         value: function showHideBtn() {
             var widowWidth = $(window).width();
@@ -532,6 +517,22 @@ var Module = function () {
                 } else {
                     $('.slide_btn').removeClass('hide');
                 }
+            });
+            return this;
+        }
+    }, {
+        key: 'whenClick',
+        value: function whenClick() {
+            var self = this;
+            var $this = this.$ele;
+            var opts = this.option;
+            var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
+            var $element = $smallBoxN;
+            var $smallBox = $this.find(".content_box2");
+            var whenClickCallBack = this.option.whenClick;
+            $smallBoxN.click(function ($element) {
+                var $element = $this.find(".select");
+                whenClickCallBack($element);
             });
             return this;
         }

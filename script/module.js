@@ -30,6 +30,7 @@ class Module {
         $(window).resize(function() {
             self.matchContainerWidth();
         });
+ 
         //按鈕顯示
         this.showHideBtn();
 
@@ -282,20 +283,7 @@ class Module {
         // return this;
     }
 
-    whenClick(){
-        var self = this;
-        var $this = this.$ele;
-        var opts = this.option; 
-        var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
-        var $element=$smallBoxN;
-        var $smallBox = $this.find(".content_box2");
-        var whenClickCallBack=this.option.whenClick;
-        $smallBoxN.click( function($element) {
-            var $element=$this.find(".select");
-            whenClickCallBack($element);
-        });
-        return this;
-    }
+    
     showHideBtn(){
         var widowWidth = $(window).width();
         if(widowWidth>=685){
@@ -310,6 +298,21 @@ class Module {
             }else{
                 $('.slide_btn').removeClass('hide');
             }
+        });
+        return this;
+    }
+
+    whenClick(){
+        var self = this;
+        var $this = this.$ele;
+        var opts = this.option; 
+        var $smallBoxN = $this.find(".content_box2:not(.boxHead)");
+        var $element=$smallBoxN;
+        var $smallBox = $this.find(".content_box2");
+        var whenClickCallBack=this.option.whenClick;
+        $smallBoxN.click( function($element) {
+            var $element=$this.find(".select");
+            whenClickCallBack($element);
         });
         return this;
     }
