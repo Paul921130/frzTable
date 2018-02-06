@@ -282,8 +282,6 @@ class Module {
         // });
         // return this;
     }
-
-    
     showHideBtn(){
         var widowWidth = $(window).width();
         if(widowWidth>=685){
@@ -301,7 +299,6 @@ class Module {
         });
         return this;
     }
-
     whenClick(){
         var self = this;
         var $this = this.$ele;
