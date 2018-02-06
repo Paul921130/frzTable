@@ -297,7 +297,7 @@ var Module = function () {
                 }
             });
         }
-        //判定瀏覽器寬度設定格子數量//要抓到ele的dom數量//寫死了....好爛...
+        //判定瀏覽器寬度設定格子數量//要抓到ele的dom數量
 
     }, {
         key: 'setShow',
@@ -310,9 +310,9 @@ var Module = function () {
             var widowWidth = $(window).width();
             self.matchContainerWidth();
             if (widowWidth >= 691) {
-                //左右各1px的border!!!!
-                var BoxShow = $(".main_box").width() / 7 - 2;
-                var BoxShow2 = $(".main_box").width() / 5 - 2;
+                //左右各1px的border!!!!floor()
+                var BoxShow = Math.floor($(".main_box").width() / 7 - 2);
+                var BoxShow2 = Math.floor($(".main_box").width() / 5 - 2);
                 $(".content_box2_defaule").width(BoxShow);
                 $(".content_box2_rel").width(BoxShow2);
             } else {
@@ -333,7 +333,7 @@ var Module = function () {
             self.matchContainerWidth();
             var borderSpace = opts.count.show * 2;
             // var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
-            var BoxShow = ($mainBox.width() - borderSpace) / opts.count.show;
+            var BoxShow = Math.floor(($mainBox.width() - borderSpace) / opts.count.show);
             $smallBox.width(BoxShow);
             // $(".content_box2").width(BoxShow);
             return this;
@@ -509,7 +509,7 @@ var Module = function () {
             var $smallBox = $this.find(".content_box2");
             var whenClickCallBack = this.option.whenClick;
             $smallBoxN.click(function ($element) {
-                var $element = $this.find(".content_box2:not(.boxHead)");
+                var $element = $this.find(".select");
                 whenClickCallBack($element);
             });
             return this;
