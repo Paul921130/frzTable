@@ -108,8 +108,8 @@ class Module {
         self.matchContainerWidth();
         if (widowWidth >= 691) {
         //左右各1px的border!!!!floor()
-            var BoxShow = Math.floor(($(".main_box").width() / 7) - 2);
-            var BoxShow2 = Math.floor(($(".main_box").width() / 5) - 2);
+            var BoxShow = ($(".main_box").width() / 7) - 2;
+            var BoxShow2 = ($(".main_box").width() / 5) - 2;
             $(".content_box2_defaule").width(BoxShow);
             $(".content_box2_rel").width(BoxShow2);
         } else {
@@ -127,17 +127,14 @@ class Module {
         var widowWidth = $(window).width();
         self.matchContainerWidth();
         var borderSpace = opts.count.show * 2;
-        // var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
-        var BoxShow = Math.floor(( $mainBox.width() - borderSpace) / opts.count.show);
+        var BoxShow = ( $mainBox.width() - borderSpace) / opts.count.show;
         $smallBox.width(BoxShow);
         // $(".content_box2").width(BoxShow);
         return this;
     }
     matchContainerWidth(){
         var containerWidth=$('.container').width();
-        // if( containerWidth<768 ){
             $('.main_box').css("max-width",containerWidth +"px");
-        // }
         return this;
     }
     ///defaultScroll 測試中!!!
