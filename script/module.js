@@ -30,7 +30,6 @@ class Module {
         $(window).resize(function() {
             self.matchContainerWidth();
         });
- 
         //按鈕顯示
         this.showHideBtn();
 
