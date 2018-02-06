@@ -30,6 +30,8 @@ class Module {
         $(window).resize(function() {
             self.matchContainerWidth();
         });
+        //按鈕顯示
+        this.showHideBtn();
 
         this.defaultScroll();
         //選擇表格function
@@ -291,6 +293,23 @@ class Module {
         $smallBoxN.click( function($element) {
             var $element=$this.find(".select");
             whenClickCallBack($element);
+        });
+        return this;
+    }
+    showHideBtn(){
+        var widowWidth = $(window).width();
+        if(widowWidth>=685){
+            $('.slide_btn').addClass('hide'); 
+        }else{
+           $('.slide_btn').removeClass('hide');
+        }
+        $(window).resize(function() {
+        var widowWidth = $(window).width();
+            if(widowWidth>=685){
+                $('.slide_btn').addClass('hide');
+            }else{
+                $('.slide_btn').removeClass('hide');
+            }
         });
         return this;
     }
