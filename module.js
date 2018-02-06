@@ -285,7 +285,7 @@ var Module = function () {
                 var widowWidth = $(window).width();
                 self.matchContainerWidth();
                 $smallBox.width(BoxShow);
-                if (widowWidth <= 690) {
+                if (widowWidth < 686) {
                     self.changeShow();
                     return this;
                 } else {
@@ -309,7 +309,7 @@ var Module = function () {
             var $smallBoxNumber = $smallBox.length / 8; //抓到了有幾排!!!分別上7下5!
             var widowWidth = $(window).width();
             self.matchContainerWidth();
-            if (widowWidth >= 691) {
+            if (widowWidth >= 686) {
                 //左右各1px的border!!!!floor()
                 var BoxShow = $(".main_box").width() / 7 - 2;
                 var BoxShow2 = $(".main_box").width() / 5 - 2;
