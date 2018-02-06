@@ -332,7 +332,8 @@ var Module = function () {
             var widowWidth = $(window).width();
             self.matchContainerWidth();
             var borderSpace = opts.count.show * 2;
-            var BoxShow = ($mainBox.width() - borderSpace) / opts.count.show;
+            // var BoxShow = ($(".main_box").width() - borderSpace) / this.option.count.show;
+            var BoxShow = Math.floor(($mainBox.width() - borderSpace) / opts.count.show);
             $smallBox.width(BoxShow);
             // $(".content_box2").width(BoxShow);
             return this;
@@ -341,7 +342,9 @@ var Module = function () {
         key: 'matchContainerWidth',
         value: function matchContainerWidth() {
             var containerWidth = $('.container').width();
+            // if( containerWidth<768 ){
             $('.main_box').css("max-width", containerWidth + "px");
+            // }
             return this;
         }
         ///defaultScroll 測試中!!!
