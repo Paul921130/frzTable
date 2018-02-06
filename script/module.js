@@ -89,8 +89,8 @@ class Module {
                 self.changeShow();
                 return this;
             } else {
-                var BoxShow = ($(".main_box").width()) / 7 - 2;
-                var BoxShow2 = ($(".main_box").width()) / 5 - 2;
+                var BoxShow = ($(".main_box").width()) / 7 - 2;//default的小格寬
+                var BoxShow2 = ($(".main_box").width()) / 5 - 2;//rel的小格寬
                 $(".content_box2_defaule").width(BoxShow);
                 $(".content_box2_rel").width(BoxShow2);
                 return this;
@@ -106,7 +106,7 @@ class Module {
         var $smallBoxNumber=$smallBox.length / 8;//抓到了有幾排!!!分別上7下5!
         var widowWidth = $(window).width();
         self.matchContainerWidth();
-        if (widowWidth >= 691) {
+        if (widowWidth >= 690) {
         //左右各1px的border!!!!
             var BoxShow = ($(".main_box").width() / 7) - 2;
             var BoxShow2 = ($(".main_box").width() / 5) - 2;
